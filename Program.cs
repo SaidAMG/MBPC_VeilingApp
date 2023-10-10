@@ -15,3 +15,16 @@ void test2()
 {
 
 }
+
+Console.WriteLine("   O        ");
+Console.WriteLine("  /|\\       ");
+Console.WriteLine("  / \\       ");
+Console.WriteLine(" /___\\      ");
+Console.WriteLine("  | |       ");
+Console.WriteLine("  | |       ");
+Console.WriteLine(" /   \\      ");
+Console.WriteLine("|     |     ");
+Console.WriteLine("=======");
+Console.WriteLine("  SAID      ");
+Console.WriteLine("   ^        ");
+Console.WriteLine("   |        ");
