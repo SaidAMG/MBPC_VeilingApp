@@ -61,7 +61,7 @@
         //Dal functies
         public void CreateBookletDAL()
         {
-            DAL.CreateBooklet(new Booklet(bookletId, name, pane, description));
+            DAL.CreateBooklet(this);
         }
         public void UpdateBookletDAL(string _name, string _pane, string _description)
         {
