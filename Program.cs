@@ -1,8 +1,16 @@
-﻿using MBPC_VeilingApp;
-using MBPC_VeilingApp.Classes;
+﻿using MBPC_VeilingApp.Classes;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
-//Booklet booklet = new Booklet(284,"test2","roodkapje1","STILL THE GOAT");
+//try
+//{
+//    Booklet booklet = new Booklet(284, "test2", "roodkapje1", "STILL THE GOAT");
+//}
+//catch (ArgumentException ex)
+//{
+//    // Bij een fout laat die ziet wat er fout is gegaan zonder dat het programma crashed.
+//    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
+//}
+
 
 //DAL.CreateBooklet(booklet);
 //DAL.UpdateBooklet(booklet);
