@@ -64,11 +64,11 @@ namespace MBPC_VeilingApp
                         while (reader.Read())
                         {
                             Booklet booklet = new Booklet(
-                                (int)reader[0], 
-                                (string)reader[1], 
-                                (string)reader[2], 
-                                (string)reader[3]);
-                            
+                                (int)reader["bookletID"],
+                                (string)reader["name"],
+                                (string)reader["pane"],
+                                (string)reader["description"]);
+
                             booklets.Add(booklet);
                         }
                     }
