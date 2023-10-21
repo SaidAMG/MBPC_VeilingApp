@@ -13,7 +13,7 @@
             name = _name;
             pane = _pane;
             description = _description;
-            CreateBookletDAL();
+            //CreateBookletDAL();
         }
 
         public Booklet(int _bookletId)
