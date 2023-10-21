@@ -69,7 +69,7 @@
         }
         public void DeleteBookletDAL()
         {
-            DAL.DeleteBooklet(new Booklet(bookletId));
+            DAL.DeleteBooklet(this);
         }
     }
 }
