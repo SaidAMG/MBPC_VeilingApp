@@ -14,7 +14,6 @@
             pane = _pane;
             description = _description;
             CreateBookletDAL();
-            
         }
 
         public Booklet(int _bookletId)
@@ -41,10 +40,6 @@
         }
 
         //Setters
-        public void SetId(int _id)
-        {
-            bookletId = _id;
-        }
         public void SetDescription(string _description)
         {
             description = _description;
@@ -58,7 +53,7 @@
             pane = _pane;
         }
 
-        //Dal functies
+        //DAL functies
         public void CreateBookletDAL()
         {
             DAL.CreateBooklet(this);

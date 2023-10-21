@@ -1,7 +1,6 @@
 ﻿using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
 
-
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //Booklet booklet = new Booklet(284,"test2","roodkapje1","STILL THE GOAT");
 
@@ -21,19 +20,19 @@ using MBPC_VeilingApp.Classes;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
 
-// implementatie 
+// implementatie komt hier
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
-// implementatie 
+// implementatie komt hier 
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
-// implementatie 
+// implementatie komt hier
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
@@ -41,6 +40,6 @@ using MBPC_VeilingApp.Classes;
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
 
-// implementatie
+// implementatie komt hier
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
