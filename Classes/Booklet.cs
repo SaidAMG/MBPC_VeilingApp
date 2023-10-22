@@ -20,11 +20,6 @@
             description = _description;
             //CreateBookletDAL();
         }
-
-        public Booklet(int _bookletId)
-        {
-            bookletId = _bookletId;
-        }
         
         //Getters
         public int GetId()
