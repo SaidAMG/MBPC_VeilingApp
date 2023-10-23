@@ -12,7 +12,7 @@ namespace MBPC_VeilingApp
         // Deze worden ook gebruikt om in de code bepaalde acties uit te voeren.
         // Je kunt deze zien als een soort database binnen de code.
         public static List<Booklet> booklets = new List<Booklet>();
-        // Lijst members komt hier
+        public static List<Member> members = new List<Member>();
         // Lijst lots komt hier
         // Lijst auctions komt hier
         // Lijst lot2Mems komt hier
@@ -23,7 +23,7 @@ namespace MBPC_VeilingApp
         {
             // hier alle reads
             ReadBooklets();
-            //memerread
+            ReadMembers();
             //Auction
             //lot
             //lot2mem
@@ -115,27 +115,111 @@ namespace MBPC_VeilingApp
 
         //CRUD Member
         // Maakt een instantie Member aan in de database.
-        public static void CreateMember(/*Member _member*/)
+        public static void CreateMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO MEMBER (firstName, lastName, address, city, zipCode, country, memberNumber, email, birthDate, memberDate, telephoneNumber) " +
+                             "VALUES (@firstName, @lastName, @address, @city, @zipCode, @country, @memberNumber, @email, @birthDate, @memberDate, @telephoneNumber)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@firstName", _member.GetFirstName());
+                    command.Parameters.AddWithValue("@lastName", _member.GetLastName());
+                    command.Parameters.AddWithValue("@address", _member.GetAddress());
+                    command.Parameters.AddWithValue("@city", _member.GetCity());
+                    command.Parameters.AddWithValue("@zipCode", _member.GetZipCode());
+                    command.Parameters.AddWithValue("@country", _member.GetCountry());
+                    command.Parameters.AddWithValue("@memberNumber", _member.GetMemberNumber());
+                    command.Parameters.AddWithValue("@email", _member.GetEmail());
+                    command.Parameters.AddWithValue("@birthDate", _member.GetBirthDate());
+                    command.Parameters.AddWithValue("@memberDate", _member.GetMemberDate());
+                    command.Parameters.AddWithValue("@telephoneNumber", _member.GetTelephoneNumber());
+
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         // Haalt alle Member instanties uit de database en voegt ze toe aan de lijst van members.
         public static void ReadMembers()
         {
-            // Implementatie hier
+            members.Clear();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "SELECT id, firstName, lastName, address, city, zipCode, country, memberNumber, email, birthDate, memberDate, telephoneNumber FROM MEMBER";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member(
+                                (int)reader["id"],
+                                (string)reader["firstName"],
+                                (string)reader["lastName"],
+                                (string)reader["address"],
+                                (string)reader["city"],
+                                (string)reader["zipCode"],
+                                (string)reader["country"],
+                                (string)reader["memberNumber"],
+                                (string)reader["email"],
+                                (DateTime)reader["birthDate"],
+                                (DateTime)reader["memberDate"],
+                                (string)reader["telephoneNumber"]);
+
+                            members.Add(member);
+                        }
+                    }
+                }
+                connection.Close();
+            }
         }
 
         // Update een instantie Member in de database aan de hand van het Id.
-        public static void UpdateMember(/*Member _member*/)
+        public static void UpdateMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "UPDATE MEMBER SET firstName = @firstName, lastName = @lastName, address = @address, city = @city, zipCode = @zipCode, country = @country, memberNumber = @memberNumber, email = @email, birthDate = @birthDate, memberDate = @memberDate, telephoneNumber = @telephoneNumber WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _member.GetId());
+                    command.Parameters.AddWithValue("@firstName", _member.GetFirstName());
+                    command.Parameters.AddWithValue("@lastName", _member.GetLastName());
+                    command.Parameters.AddWithValue("@address", _member.GetAddress());
+                    command.Parameters.AddWithValue("@city", _member.GetCity());
+                    command.Parameters.AddWithValue("@zipCode", _member.GetZipCode());
+                    command.Parameters.AddWithValue("@country", _member.GetCountry());
+                    command.Parameters.AddWithValue("@memberNumber", _member.GetMemberNumber());
+                    command.Parameters.AddWithValue("@email", _member.GetEmail());
+                    command.Parameters.AddWithValue("@birthDate", _member.GetBirthDate());
+                    command.Parameters.AddWithValue("@memberDate", _member.GetMemberDate());
+                    command.Parameters.AddWithValue("@telephoneNumber", _member.GetTelephoneNumber());
+
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         // Verwijdert een instantie Member uit de database aan de hand van het Id.
-        public static void DeleteMember(/*Member _member*/)
+        public static void DeleteMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "DELETE FROM MEMBER WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _member.GetId());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
 
