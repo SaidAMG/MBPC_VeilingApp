@@ -71,6 +71,12 @@ namespace MBPC_VeilingApp.Classes
                 endDate = _endDate;
             }
 
-
+        //DAL functies
+        public void CreateAuctionDAL()
+        {
+            DAL.CreateAuction(this);
         }
     }
+}
+
+      
