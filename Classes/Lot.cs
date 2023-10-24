@@ -17,15 +17,16 @@ public class Lot
 	private int verified;
 	private double reservePrice;
 
-	public Lot(int _id, int _auctionId, int _vendorId, int _bookletId, int _lotId, string _memberReference, string _description, string _perfType, string _perfCondition, int _verified, double _reservePrice)
+	public Lot(int _id, int _auctionId, int _vendorId, int _bookletId, int _lotId, string _description, string _perfType, string _perfCondition, int _verified, double _reservePrice, string _memberReference)
 	{
 		// Controle om de kijken of de opgegeven argumenten voldoen aan de database regels
 		if (_memberReference.Length > 10) { throw new ArgumentException("Name should be at most 10 characters long."); }
         if (_description.Length > 100) { throw new ArgumentException("Description should be at most 100 characters long."); }
-        if (_perfType.Length > 10) { throw new ArgumentException("Pane should be at most 10 characters long."); }
-        if (_perfCondition.Length > 10) { throw new ArgumentException("Pane should be at most 10 characters long."); }
-		
-		id = _id;
+        if (_perfType.Length > 10) { throw new ArgumentException("PerfType should be at most 10 characters long."); }
+        if (_perfCondition.Length > 10) { throw new ArgumentException("PerfCondition should be at most 10 characters long."); }
+        if (_reservePrice > 8.99) { throw new ArgumentException("reservePrice should be at most 10 characters long."); }
+
+        id = _id;
 		auctionId = _auctionId;
 		vendorId = _vendorId;
 		bookletId = _bookletId;
@@ -152,14 +153,9 @@ public class Lot
 		DAL.CreateLot(this);
 	}
 
-	public void ReadLot()
+	public void UpdateLot(int _auctionId, int _vendroId, int _bookletId, int _lotId, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, double _reservePrice)
 	{
-		DAL.ReadLots(this);
-	}
-
-	public void UpdateLot()
-	{
-		DAL.UpdateLot(this);
+		DAL.UpdateLot(new Lot(id, _auctionId, _vendroId, _bookletId, _lotId, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
 	}
 
 	public void DeleteLot()
