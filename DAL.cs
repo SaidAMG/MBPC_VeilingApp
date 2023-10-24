@@ -254,12 +254,13 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "INSERT INTO AUCTION(name, description, startDate, endDate) VALUES(@name, @desciption, @startDate, @endDate)";
+                string qry = "INSERT INTO AUCTION(name, auctioneerId ,description, startDate, endDate) VALUES(@name, @auctioneerId, @description, @startDate, @endDate)";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
                     //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
                     command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
                     command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
                     command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
                     command.Parameters.AddWithValue("@description", _auction.GetDescription());
@@ -276,7 +277,7 @@ namespace MBPC_VeilingApp
             auctions.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "SELECT auctioneerId, name, description, startDate, endDate, FROM AUCTION";
+                string qry = "SELECT id, auctioneerId, name, description, startDate, endDate FROM AUCTION";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
@@ -285,9 +286,10 @@ namespace MBPC_VeilingApp
                         while (reader.Read())
                         {
                             Auction auction = new Auction(
+                                (int)reader["id"],
                                 (int)reader["auctioneerId"],
                                 (string)reader["name"],
-                                (string)reader["desciption"],
+                                (string)reader["description"],
                                 (DateTime)reader["startDate"],
                                 (DateTime)reader["endDate"]);
 
@@ -301,21 +303,49 @@ namespace MBPC_VeilingApp
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.
-        public static void UpdateAuction(/*Auction _auction*/)
-        {
-            // Implementatie hier
-        }
+            public static void UpdateAuction(Auction _auction)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(qry, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", _auction.GetId());
+                        command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                        command.Parameters.AddWithValue("@name", _auction.GetName());
+                        command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                        command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                        command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+    
 
         // Verwijdert een instantie Auction uit de database aan de hand van het Id.
-        public static void DeleteAuction(/*Auction _auction*/)
-        {
-            // Implementatie hier
-        }
+            public static void DeleteAuction(Auction _auction)
+            {
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string qry = "DELETE FROM AUCTION WHERE id = @id";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(qry, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+
+            }
 
 
-        //CRUD Lot2Mem
-        // Maakt een instantie Lot2Mem aan in de database.
-        public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
+            //CRUD Lot2Mem
+            // Maakt een instantie Lot2Mem aan in de database.
+            public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
         {
             // Implementatie hier
         }
