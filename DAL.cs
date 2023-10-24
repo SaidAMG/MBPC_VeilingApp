@@ -14,7 +14,7 @@ namespace MBPC_VeilingApp
         public static List<Booklet> booklets = new List<Booklet>();
         public static List<Member> members = new List<Member>();
         // Lijst lots komt hier
-        // Lijst auctions komt hier
+        public static List<Auction> auctions = new List<Auction>();
         // Lijst lot2Mems komt hier
 
         // De RefreshDal functie stelt ons in staat om de InCodeDatabase te synchroniseren met de SQLDatabase.
@@ -24,7 +24,7 @@ namespace MBPC_VeilingApp
             // hier alle reads
             ReadBooklets();
             ReadMembers();
-            //Auction
+            ReadAuctions();
             //lot
             //lot2mem
         }
@@ -250,15 +250,54 @@ namespace MBPC_VeilingApp
 
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.
-        public static void CreateAuction(/*Auction _auction*/)
+        public static void CreateAuction(Auction _auction)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO AUCTION(name, description, startDate, endDate) VALUES(@name, @desciption, @startDate, @endDate)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
+                    command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                    command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                    command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
+
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
         public static void ReadAuctions()
         {
-            // Implementatie hier
+            auctions.Clear();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "SELECT auctioneerId, name, description, startDate, endDate, FROM AUCTION";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Auction auction = new Auction(
+                                (int)reader["auctioneerId"],
+                                (string)reader["name"],
+                                (string)reader["desciption"],
+                                (DateTime)reader["startDate"],
+                                (DateTime)reader["endDate"]);
+
+                            auctions.Add(auction);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.
