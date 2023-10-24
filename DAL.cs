@@ -164,11 +164,11 @@ namespace MBPC_VeilingApp
                                 (string)reader["city"],
                                 (string)reader["zipCode"],
                                 (string)reader["country"],
-                                (string)reader["memberNumber"],
-                                (string)reader["email"],
-                                (DateTime)reader["birthDate"],
-                                (DateTime)reader["memberDate"],
-                                (string)reader["telephoneNumber"]);
+                                (int)reader["memberNumber"],
+                                reader["email"] == DBNull.Value ? string.Empty : (string)reader["email"],
+                                reader["birthDate"] == DBNull.Value ? DateTime.MinValue : (DateTime)reader["birthDate"],
+                                reader["memberDate"] == DBNull.Value ? DateTime.MinValue : (DateTime)reader["memberDate"],
+                                reader["telephoneNumber"] == DBNull.Value ? string.Empty : (string)reader["telephoneNumber"]);
 
                             members.Add(member);
                         }
@@ -221,7 +221,6 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-
 
         //CRUD Lot
         // Maakt een instantie Lot aan in de database.
