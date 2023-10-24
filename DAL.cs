@@ -251,10 +251,25 @@ namespace MBPC_VeilingApp
 
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.
-        public static void CreateAuction(/*Auction _auction*/)
+        public static void CreateAuction(Auction _auction)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO AUCTION(name, description, startDate, endDate) VALUES(@name, @desciption, @startDate, @endDate)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
+                    command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                    command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                    command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
+
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
         public static void ReadAuctions()
