@@ -15,21 +15,23 @@ namespace MBPC_VeilingApp.Classes
         private string city;
         private string zipCode;
         private string country;
-        private string memberNumber;
+        private int memberNumber;
         private string email;
         private DateTime birthDate;
         private DateTime memberDate;
         private string telephoneNumber;
 
-        public Member(int _id, string _firstName, string _lastName, string _address, string _city, string _zipCode, string _country, string _memberNumber, string _email, DateTime _birthDate, DateTime _memberDate, string _telephoneNumber)
+        public Member(int _id, string _firstName, string _lastName, string _address, string _city, string _zipCode, string _country, int _memberNumber, string _email, DateTime _birthDate, DateTime _memberDate, string _telephoneNumber)
         {
             // Controle om te kijken of de opgegeven argumenten voldoen aan de database regels
-            if (_firstName.Length > 30) { throw new ArgumentException("First Name should be at most 50 characters long."); }
+            if (_firstName.Length > 50) { throw new ArgumentException("First Name should be at most 50 characters long."); }
             if (_lastName.Length > 50) { throw new ArgumentException("Last Name should be at most 50 characters long."); }
+            if (_address.Length > 50) { throw new ArgumentException("Address should be at most 50 characters long."); }
+            if (_city.Length > 50) { throw new ArgumentException("City should be at most 50 characters long."); }
             if (_zipCode.Length > 10) { throw new ArgumentException("Zip Code should be at most 10 characters long."); }
-            if (_country.Length > 40) { throw new ArgumentException("Country should be at most 50 characters long."); }
-            if (_memberNumber.Length > 20) { throw new ArgumentException("Member Number should be at most 20 characters long."); }
+            if (_country.Length > 50) { throw new ArgumentException("Country should be at most 50 characters long."); }
             if (_email.Length > 100) { throw new ArgumentException("Email should be at most 100 characters long."); }
+            if (_telephoneNumber.Length > 15) { throw new ArgumentException("Telephonenumber should be at most 50 characters long."); } 
 
             id = _id;
             firstName = _firstName;
@@ -81,7 +83,7 @@ namespace MBPC_VeilingApp.Classes
             return country;
         }
 
-        public string GetMemberNumber()
+        public int GetMemberNumber()
         {
             return memberNumber;
         }
@@ -137,7 +139,7 @@ namespace MBPC_VeilingApp.Classes
             country = _country;
         }
 
-        public void SetMemberNumber(string _memberNumber)
+        public void SetMemberNumber(int _memberNumber)
         {
             memberNumber = _memberNumber;
         }
@@ -168,7 +170,7 @@ namespace MBPC_VeilingApp.Classes
             DAL.CreateMember(this);
         }
 
-        public void UpdateMemberDAL(string _firstName, string _lastName, string _address, string _city, string _zipCode, string _country, string _memberNumber, string _email, DateTime _birthDate, DateTime _memberDate, string _telephoneNumber)
+        public void UpdateMemberDAL(string _firstName, string _lastName, string _address, string _city, string _zipCode, string _country, int _memberNumber, string _email, DateTime _birthDate, DateTime _memberDate, string _telephoneNumber)
         {
             DAL.UpdateMember(new Member(id, _firstName, _lastName, _address, _city, _zipCode, _country, _memberNumber, _email, _birthDate, _memberDate, _telephoneNumber));
         }
