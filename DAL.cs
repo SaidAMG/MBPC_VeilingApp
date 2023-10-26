@@ -145,12 +145,11 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "INSERT INTO LOT(id, auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference)" +
-                             "VALUES (@id, @auctionid, @vendroId, @bookletId, @lotId, @description, @perfType, @perfCondition, @verified, @reservePrice, @memberReference)";
+                string qry = "INSERT INTO LOT(auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference)" +
+                             "VALUES (@auctionid, @vendorId, @bookletId, @lotId, @description, @perfType, @perfCondition, @verified, @reservePrice, @memberReference)";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    command.Parameters.AddWithValue("@id", _lot.GetId());
                     command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
                     command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
                     command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
@@ -158,10 +157,9 @@ namespace MBPC_VeilingApp
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
-                    command.Parameters.AddWithValue("@verified", _lot.Getverified());
+                    command.Parameters.AddWithValue("@verified", _lot.GetVerified());
                     command.Parameters.AddWithValue("@reservePrice", _lot.GetReservePrice());
                     command.Parameters.AddWithValue("@memberReference", _lot.GetMemberReference());
-
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -193,7 +191,7 @@ namespace MBPC_VeilingApp
                                 (string)reader["perfType"],
                                 (string)reader["perfCondition"],
                                 (int)reader["verified"],
-                                (double)reader["reservePrice"],
+                                (decimal)reader["reservePrice"],
                                 reader["memberReference"] == DBNull.Value ? string.Empty : (string)reader["memberReference"]);
                            
                             lots.Add(lot);
@@ -209,7 +207,7 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotId = @lotId, description = @description, perType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
+                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotId = @lotId, description = @description, perfType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
@@ -221,7 +219,7 @@ namespace MBPC_VeilingApp
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
-                    command.Parameters.AddWithValue("@verified", _lot.Getverified());
+                    command.Parameters.AddWithValue("@verified", _lot.GetVerified());
                     command.Parameters.AddWithValue("@reservePrice", _lot.GetReservePrice());
                     command.Parameters.AddWithValue("@memberReference", _lot.GetMemberReference());
 
