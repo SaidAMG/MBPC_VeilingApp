@@ -13,7 +13,7 @@ namespace MBPC_VeilingApp
         // Je kunt deze zien als een soort database binnen de code.
         public static List<Booklet> booklets = new List<Booklet>();
         public static List<Member> members = new List<Member>();
-        // Lijst lots komt hier
+        public static List<Lot> lots = new List<Lot>();
         public static List<Auction> auctions = new List<Auction>();
         // Lijst lot2Mems komt hier
 
@@ -25,7 +25,7 @@ namespace MBPC_VeilingApp
             ReadBooklets();
             ReadMembers();
             ReadAuctions();
-            //lot
+            ReadLots();
             //lot2mem
         }
 
@@ -41,8 +41,8 @@ namespace MBPC_VeilingApp
                 {
                     //command.Parameters.AddWithValue("@bookletID",_booklet.GetId());
                     command.Parameters.AddWithValue("@name", _booklet.GetName());
-                    command.Parameters.AddWithValue("@pane",_booklet.GetPane());
-                    command.Parameters.AddWithValue("@description",_booklet.GetDescription());
+                    command.Parameters.AddWithValue("@pane", _booklet.GetPane());
+                    command.Parameters.AddWithValue("@description", _booklet.GetDescription());
                     command.ExecuteNonQuery();
                 }
                 connection.Close();
@@ -86,7 +86,7 @@ namespace MBPC_VeilingApp
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    command.Parameters.AddWithValue("@bookletID",_booklet.GetId());
+                    command.Parameters.AddWithValue("@bookletID", _booklet.GetId());
                     command.Parameters.AddWithValue("@name", _booklet.GetName());
                     command.Parameters.AddWithValue("@pane", _booklet.GetPane());
                     command.Parameters.AddWithValue("@description", _booklet.GetDescription());
@@ -95,7 +95,7 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-        
+
         // Delete een instantie Booklet in de database aan de hand van het Id.
         public static void DeleteBooklet(Booklet _booklet)
         {
@@ -224,29 +224,110 @@ namespace MBPC_VeilingApp
 
         //CRUD Lot
         // Maakt een instantie Lot aan in de database.
-        public static void CreateLot(/*Lot _lot*/)
+        public static void CreateLot(Lot _lot)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO LOT(auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference)" +
+                             "VALUES (@auctionid, @vendorId, @bookletId, @lotId, @description, @perfType, @perfCondition, @verified, @reservePrice, @memberReference)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
+                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
+                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
+                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@description", _lot.GetDescription());
+                    command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
+                    command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
+                    command.Parameters.AddWithValue("@verified", _lot.GetVerified());
+                    command.Parameters.AddWithValue("@reservePrice", _lot.GetReservePrice());
+                    command.Parameters.AddWithValue("@memberReference", _lot.GetMemberReference());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         // Haalt alle Lot instanties uit de database en voegt ze toe aan de lijst van lots.
         public static void ReadLots()
         {
             // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                lots.Clear();
+                string qry = "SELECT id, auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference FROM LOT";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Lot lot = new Lot(
+                                (int)reader["id"],
+                                (int)reader["auctionId"],
+                                (int)reader["vendorId"],
+                                (int)reader["bookletId"],
+                                (int)reader["lotId"],
+                                (string)reader["description"],
+                                (string)reader["perfType"],
+                                (string)reader["perfCondition"],
+                                (int)reader["verified"],
+                                (decimal)reader["reservePrice"],
+                                reader["memberReference"] == DBNull.Value ? string.Empty : (string)reader["memberReference"]);
+                           
+                            lots.Add(lot);
+                        }
+                    }
+                }
+                connection.Close();
+            }
         }
 
         // Update een instantie Lot in de database aan de hand van het Id.
-        public static void UpdateLot(/*Lot _lot*/)
+        public static void UpdateLot(Lot _lot)
         {
-            // Implementatie hier
-        }
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotId = @lotId, description = @description, perfType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _lot.GetId());
+                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
+                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
+                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
+                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@description", _lot.GetDescription());
+                    command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
+                    command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
+                    command.Parameters.AddWithValue("@verified", _lot.GetVerified());
+                    command.Parameters.AddWithValue("@reservePrice", _lot.GetReservePrice());
+                    command.Parameters.AddWithValue("@memberReference", _lot.GetMemberReference());
 
-        // Verwijdert een instantie Lot uit de database aan de hand van het Id.
-        public static void DeleteLot(/*Lot _lot*/)
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
+        }
+    
+
+    // Verwijdert een instantie Lot uit de database aan de hand van het Id.
+        public static void DeleteLot(Lot _lot)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "DELETE FROM LOT WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _lot.GetId());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
-
 
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.
