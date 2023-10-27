@@ -221,6 +221,7 @@ namespace MBPC_VeilingApp
             }
         }
 
+
         //CRUD Lot
         // Maakt een instantie Lot aan in de database.
         public static void CreateLot(Lot _lot)
@@ -311,7 +312,6 @@ namespace MBPC_VeilingApp
             }
         }
 
-
         // Verwijdert een instantie Lot uit de database aan de hand van het Id.
         public static void DeleteLot(Lot _lot)
         {
@@ -349,7 +349,6 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
         public static void ReadAuctions()
@@ -402,7 +401,6 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-
 
         // Verwijdert een instantie Auction uit de database aan de hand van het Id.
         public static void DeleteAuction(Auction _auction)
