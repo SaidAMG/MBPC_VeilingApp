@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MBPC_VeilingApp.Classes
+﻿namespace MBPC_VeilingApp.Classes
 {
     public class Auction
     {
@@ -94,4 +88,3 @@ namespace MBPC_VeilingApp.Classes
     }
 }
 
-      

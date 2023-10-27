@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MBPC_VeilingApp.Classes
+﻿namespace MBPC_VeilingApp.Classes
 {
     public class Member
     {
@@ -31,7 +25,7 @@ namespace MBPC_VeilingApp.Classes
             if (_zipCode.Length > 10) { throw new ArgumentException("Zip Code should be at most 10 characters long."); }
             if (_country.Length > 50) { throw new ArgumentException("Country should be at most 50 characters long."); }
             if (_email.Length > 100) { throw new ArgumentException("Email should be at most 100 characters long."); }
-            if (_telephoneNumber.Length > 15) { throw new ArgumentException("Telephonenumber should be at most 50 characters long."); } 
+            if (_telephoneNumber.Length > 15) { throw new ArgumentException("Telephonenumber should be at most 50 characters long."); }
 
             id = _id;
             firstName = _firstName;

@@ -1,6 +1,5 @@
 ﻿using MBPC_VeilingApp.Classes;
 using System.Data.SqlClient;
-using System.Diagnostics.Metrics;
 
 namespace MBPC_VeilingApp
 {
@@ -276,7 +275,7 @@ namespace MBPC_VeilingApp
                                 (int)reader["verified"],
                                 (decimal)reader["reservePrice"],
                                 reader["memberReference"] == DBNull.Value ? string.Empty : (string)reader["memberReference"]);
-                           
+
                             lots.Add(lot);
                         }
                     }
@@ -311,9 +310,9 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-    
 
-    // Verwijdert een instantie Lot uit de database aan de hand van het Id.
+
+        // Verwijdert een instantie Lot uit de database aan de hand van het Id.
         public static void DeleteLot(Lot _lot)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -384,49 +383,49 @@ namespace MBPC_VeilingApp
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.
-            public static void UpdateAuction(Auction _auction)
+        public static void UpdateAuction(Auction _auction)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(qry, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", _auction.GetId());
-                        command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
-                        command.Parameters.AddWithValue("@name", _auction.GetName());
-                        command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
-                        command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
-                        command.Parameters.AddWithValue("@description", _auction.GetDescription());
-                        command.ExecuteNonQuery();
-                    }
-                    connection.Close();
+                    command.Parameters.AddWithValue("@id", _auction.GetId());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                    command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                    command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                    command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                    command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
-    
+        }
+
 
         // Verwijdert een instantie Auction uit de database aan de hand van het Id.
-            public static void DeleteAuction(Auction _auction)
+        public static void DeleteAuction(Auction _auction)
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                string qry = "DELETE FROM AUCTION WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    string qry = "DELETE FROM AUCTION WHERE id = @id";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(qry, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
-                        command.ExecuteNonQuery();
-                    }
-                    connection.Close();
+                    command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
+                    command.ExecuteNonQuery();
                 }
-
+                connection.Close();
             }
 
+        }
 
-            //CRUD Lot2Mem
-            // Maakt een instantie Lot2Mem aan in de database.
-            public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
+
+        //CRUD Lot2Mem
+        // Maakt een instantie Lot2Mem aan in de database.
+        public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
         {
             // Implementatie hier
         }
