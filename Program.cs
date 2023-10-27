@@ -28,9 +28,20 @@ using MBPC_VeilingApp.Classes;
 
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
+//Member member = new Member(82, "Dennis", "Bückers", "Nieuw Eyckholt", "Heerlen", "6419DJ", "Holland", 1401, "2105449buckers@zuyd.nl", DateTime.Parse("1998-07-19"), DateTime.Parse("2023-10-24"), "0625076277");
 
-// implementatie komt hier
+//DAL.CreateMember(member);
+//DAL.ReadMembers();
+//DAL.UpdateMember(member);
+//DAL.DeleteMember(member);
 
+
+//List<Member> members = DAL.members;
+
+//foreach (Member m in members)
+//{
+//    Console.WriteLine($"{m.GetId()},{m.GetFirstName()},{m.GetLastName()},{m.GetAddress()},{m.GetZipCode()},{m.GetCountry()},{m.GetMemberNumber()},{m.GetEmail()},{m.GetBirthDate()},{m.GetMemberNumber()},{m.GetTelephoneNumber()} ");
+//}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
@@ -62,6 +73,19 @@ foreach(Lot l in lots)
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
+//Auction auction = new Auction(3, 1, "A215", "2022 Fall Auction", DateTime.Now, DateTime.Now);
+
+//DAL.CreateAuction(auction);
+//DAL.UpdateAuction(auction);
+//DAL.DeleteAuction(auction);
+//DAL.ReadAuctions();
+
+//List<Auction> auctions = DAL.auctions;
+
+//foreach (Auction b in auctions)
+//{
+//    Console.WriteLine($"{b.GetId()},{b.GetName()},{b.GetStartDate()},{b.GetDescription()} {b.GetEndDate()}");
+//}
 
 // implementatie komt hier
 

@@ -12,9 +12,9 @@ namespace MBPC_VeilingApp
         // Deze worden ook gebruikt om in de code bepaalde acties uit te voeren.
         // Je kunt deze zien als een soort database binnen de code.
         public static List<Booklet> booklets = new List<Booklet>();
-        // Lijst members komt hier
+        public static List<Member> members = new List<Member>();
         public static List<Lot> lots = new List<Lot>();
-        // Lijst auctions komt hier
+        public static List<Auction> auctions = new List<Auction>();
         // Lijst lot2Mems komt hier
 
         // De RefreshDal functie stelt ons in staat om de InCodeDatabase te synchroniseren met de SQLDatabase.
@@ -23,8 +23,8 @@ namespace MBPC_VeilingApp
         {
             // hier alle reads
             ReadBooklets();
-            //memerread
-            //Auction
+            ReadMembers();
+            ReadAuctions();
             ReadLots();
             //lot2mem
         }
@@ -115,29 +115,112 @@ namespace MBPC_VeilingApp
 
         //CRUD Member
         // Maakt een instantie Member aan in de database.
-        public static void CreateMember(/*Member _member*/)
+        public static void CreateMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO MEMBER (firstName, lastName, address, city, zipCode, country, memberNumber, email, birthDate, memberDate, telephoneNumber) " +
+                             "VALUES (@firstName, @lastName, @address, @city, @zipCode, @country, @memberNumber, @email, @birthDate, @memberDate, @telephoneNumber)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@firstName", _member.GetFirstName());
+                    command.Parameters.AddWithValue("@lastName", _member.GetLastName());
+                    command.Parameters.AddWithValue("@address", _member.GetAddress());
+                    command.Parameters.AddWithValue("@city", _member.GetCity());
+                    command.Parameters.AddWithValue("@zipCode", _member.GetZipCode());
+                    command.Parameters.AddWithValue("@country", _member.GetCountry());
+                    command.Parameters.AddWithValue("@memberNumber", _member.GetMemberNumber());
+                    command.Parameters.AddWithValue("@email", _member.GetEmail());
+                    command.Parameters.AddWithValue("@birthDate", _member.GetBirthDate());
+                    command.Parameters.AddWithValue("@memberDate", _member.GetMemberDate());
+                    command.Parameters.AddWithValue("@telephoneNumber", _member.GetTelephoneNumber());
+
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         // Haalt alle Member instanties uit de database en voegt ze toe aan de lijst van members.
         public static void ReadMembers()
         {
-            // Implementatie hier
+            members.Clear();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "SELECT id, firstName, lastName, address, city, zipCode, country, memberNumber, email, birthDate, memberDate, telephoneNumber FROM MEMBER";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Member member = new Member(
+                                (int)reader["id"],
+                                (string)reader["firstName"],
+                                (string)reader["lastName"],
+                                (string)reader["address"],
+                                (string)reader["city"],
+                                (string)reader["zipCode"],
+                                (string)reader["country"],
+                                (int)reader["memberNumber"],
+                                reader["email"] == DBNull.Value ? string.Empty : (string)reader["email"],
+                                reader["birthDate"] == DBNull.Value ? DateTime.MinValue : (DateTime)reader["birthDate"],
+                                reader["memberDate"] == DBNull.Value ? DateTime.MinValue : (DateTime)reader["memberDate"],
+                                reader["telephoneNumber"] == DBNull.Value ? string.Empty : (string)reader["telephoneNumber"]);
+
+                            members.Add(member);
+                        }
+                    }
+                }
+                connection.Close();
+            }
         }
 
         // Update een instantie Member in de database aan de hand van het Id.
-        public static void UpdateMember(/*Member _member*/)
+        public static void UpdateMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "UPDATE MEMBER SET firstName = @firstName, lastName = @lastName, address = @address, city = @city, zipCode = @zipCode, country = @country, memberNumber = @memberNumber, email = @email, birthDate = @birthDate, memberDate = @memberDate, telephoneNumber = @telephoneNumber WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _member.GetId());
+                    command.Parameters.AddWithValue("@firstName", _member.GetFirstName());
+                    command.Parameters.AddWithValue("@lastName", _member.GetLastName());
+                    command.Parameters.AddWithValue("@address", _member.GetAddress());
+                    command.Parameters.AddWithValue("@city", _member.GetCity());
+                    command.Parameters.AddWithValue("@zipCode", _member.GetZipCode());
+                    command.Parameters.AddWithValue("@country", _member.GetCountry());
+                    command.Parameters.AddWithValue("@memberNumber", _member.GetMemberNumber());
+                    command.Parameters.AddWithValue("@email", _member.GetEmail());
+                    command.Parameters.AddWithValue("@birthDate", _member.GetBirthDate());
+                    command.Parameters.AddWithValue("@memberDate", _member.GetMemberDate());
+                    command.Parameters.AddWithValue("@telephoneNumber", _member.GetTelephoneNumber());
+
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
 
         // Verwijdert een instantie Member uit de database aan de hand van het Id.
-        public static void DeleteMember(/*Member _member*/)
+        public static void DeleteMember(Member _member)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "DELETE FROM MEMBER WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    command.Parameters.AddWithValue("@id", _member.GetId());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
-
 
         //CRUD Lot
         // Maakt een instantie Lot aan in de database.
@@ -248,33 +331,102 @@ namespace MBPC_VeilingApp
 
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.
-        public static void CreateAuction(/*Auction _auction*/)
+        public static void CreateAuction(Auction _auction)
         {
-            // Implementatie hier
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "INSERT INTO AUCTION(name, auctioneerId ,description, startDate, endDate) VALUES(@name, @auctioneerId, @description, @startDate, @endDate)";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
+                    command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                    command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                    command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                    command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                    command.ExecuteNonQuery();
+                }
+                connection.Close();
+            }
         }
+
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
         public static void ReadAuctions()
         {
-            // Implementatie hier
+            auctions.Clear();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string qry = "SELECT id, auctioneerId, name, description, startDate, endDate FROM AUCTION";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Auction auction = new Auction(
+                                (int)reader["id"],
+                                (int)reader["auctioneerId"],
+                                (string)reader["name"],
+                                (string)reader["description"],
+                                (DateTime)reader["startDate"],
+                                (DateTime)reader["endDate"]);
+
+                            auctions.Add(auction);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.
-        public static void UpdateAuction(/*Auction _auction*/)
-        {
-            // Implementatie hier
-        }
+            public static void UpdateAuction(Auction _auction)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(qry, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", _auction.GetId());
+                        command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                        command.Parameters.AddWithValue("@name", _auction.GetName());
+                        command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                        command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                        command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+            }
+    
 
         // Verwijdert een instantie Auction uit de database aan de hand van het Id.
-        public static void DeleteAuction(/*Auction _auction*/)
-        {
-            // Implementatie hier
-        }
+            public static void DeleteAuction(Auction _auction)
+            {
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string qry = "DELETE FROM AUCTION WHERE id = @id";
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(qry, connection))
+                    {
+                        command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
+                        command.ExecuteNonQuery();
+                    }
+                    connection.Close();
+                }
+
+            }
 
 
-        //CRUD Lot2Mem
-        // Maakt een instantie Lot2Mem aan in de database.
-        public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
+            //CRUD Lot2Mem
+            // Maakt een instantie Lot2Mem aan in de database.
+            public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
         {
             // Implementatie hier
         }
