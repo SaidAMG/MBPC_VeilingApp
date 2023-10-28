@@ -236,7 +236,7 @@ namespace MBPC_VeilingApp
                     command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
                     command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
                     command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId()); // moet "@lotNumber" zijn en "lotNumber"/"@lotNumber" in de qry
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
@@ -269,7 +269,7 @@ namespace MBPC_VeilingApp
                                 (int)reader["auctionId"],
                                 (int)reader["vendorId"],
                                 (int)reader["bookletId"],
-                                (int)reader["lotId"],
+                                (int)reader["lotId"], // moet "lotNumber" zijn en "lotNumber" in de qry
                                 (string)reader["description"],
                                 (string)reader["perfType"],
                                 (string)reader["perfCondition"],
@@ -298,7 +298,7 @@ namespace MBPC_VeilingApp
                     command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
                     command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
                     command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());// moet "@lotNumber" zijn en "lotNumber = @lotNumber" in de qry
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
