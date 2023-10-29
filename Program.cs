@@ -47,29 +47,29 @@ using MBPC_VeilingApp.Classes;
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 // implementatie komt hier 
-Lot lot = new Lot(0, 0, 0, 0, 0, "", "", "", 0, 0, "");
+//Lot lot = new Lot(0, 0, 0, 0, 0, "", "", "", 0, 0, "");
 
-try
-{
-    lot = new Lot(3679, 1, 42, 1, 1, "the queen", "AP", "Good", 11, 50, "test");
-}
-catch(ArgumentException ex)
-{
-    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
-}
+//try
+//{
+//    lot = new Lot(3679, 1, 42, 1, 1, "the queen", "AP", "Good", 11, 50, "test");
+//}
+//catch(ArgumentException ex)
+//{
+//    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
+//}
 
 
-DAL.CreateLot(lot);
-DAL.UpdateLot(lot);
-DAL.DeleteLot(lot);
-DAL.ReadLots();
+//DAL.CreateLot(lot);
+//DAL.UpdateLot(lot);
+//DAL.DeleteLot(lot);
+//DAL.ReadLots();
 
-List<Lot> lots = DAL.lots;
+//List<Lot> lots = DAL.lots;
 
-foreach(Lot l in lots)
-{
-    Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotId()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
-}
+//foreach (Lot l in lots)
+//{
+//   Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotNumber()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
+//}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane

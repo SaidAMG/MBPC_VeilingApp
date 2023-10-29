@@ -228,15 +228,15 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "INSERT INTO LOT(auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference)" +
-                             "VALUES (@auctionid, @vendorId, @bookletId, @lotId, @description, @perfType, @perfCondition, @verified, @reservePrice, @memberReference)";
+                string qry = "INSERT INTO LOT(auctionId, vendorId, bookletId, lotNumber, description, perfType, perfCondition, verified, reservePrice, memberReference)" +
+                             "VALUES (@auctionid, @vendorId, @bookletId, @lotNumber, @description, @perfType, @perfCondition, @verified, @reservePrice, @memberReference)";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
                     command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
                     command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
                     command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
@@ -256,7 +256,7 @@ namespace MBPC_VeilingApp
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 lots.Clear();
-                string qry = "SELECT id, auctionId, vendorId, bookletId, lotId, description, perfType, perfCondition, verified, reservePrice, memberReference FROM LOT";
+                string qry = "SELECT id, auctionId, vendorId, bookletId, lotNumber, description, perfType, perfCondition, verified, reservePrice, memberReference FROM LOT";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
@@ -269,7 +269,7 @@ namespace MBPC_VeilingApp
                                 (int)reader["auctionId"],
                                 (int)reader["vendorId"],
                                 (int)reader["bookletId"],
-                                (int)reader["lotId"],
+                                (int)reader["lotNumber"],
                                 (string)reader["description"],
                                 (string)reader["perfType"],
                                 (string)reader["perfCondition"],
@@ -290,7 +290,7 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotId = @lotId, description = @description, perfType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
+                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotNumber = @lotNumber, description = @description, perfType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
@@ -298,7 +298,7 @@ namespace MBPC_VeilingApp
                     command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
                     command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
                     command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotId", _lot.GetLotId());
+                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
