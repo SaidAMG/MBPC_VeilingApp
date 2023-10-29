@@ -68,7 +68,7 @@ using MBPC_VeilingApp.Classes;
 
 //foreach (Lot l in lots)
 //{
-//    Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotId()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
+//    Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotNumber()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
 //}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 

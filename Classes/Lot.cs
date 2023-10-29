@@ -7,7 +7,7 @@ public class Lot
     private int auctionId;
     private int vendorId;
     private int bookletId;
-    private int lotId;
+    private int lotNumber;
     private string description;
     private string perfType;
     private string perfCondition;
@@ -15,14 +15,14 @@ public class Lot
     private decimal reservePrice;
     private string memberReference;
 
-    public Lot(int _id, int _auctionId, int _vendorId, int _bookletId, int _lotId, string _description, string _perfType, string _perfCondition, int _verified, decimal _reservePrice, string _memberReference)
+    public Lot(int _id, int _auctionId, int _vendorId, int _bookletId, int _lotNumber, string _description, string _perfType, string _perfCondition, int _verified, decimal _reservePrice, string _memberReference)
     {
         // Controle om de kijken of de opgegeven argumenten voldoen aan de database regels
         if (_memberReference.Length > 10) { throw new ArgumentException("MemberReference should be at most 10 characters long."); }
         if (_description.Length > 100) { throw new ArgumentException("Description should be at most 100 characters long."); }
         if (_perfType.Length > 10) { throw new ArgumentException("PerfType should be at most 10 characters long."); }
         if (_perfCondition.Length > 10) { throw new ArgumentException("PerfCondition should be at most 10 characters long."); }
-        string formattedValue = reservePrice.ToString("0.##########"); // Formaat met maximaal 10 decimalen
+        string formattedValue = reservePrice.ToString("000000000.##"); // Formaat met maximaal 10 decimalen
 
         if (formattedValue.Length > 12) // 2 extra tekens voor mogelijke decimalen en min-teken
         {
@@ -33,7 +33,7 @@ public class Lot
         auctionId = _auctionId;
         vendorId = _vendorId;
         bookletId = _bookletId;
-        lotId = _lotId;
+        lotNumber = _lotNumber;
         description = _description;
         perfType = _perfType;
         perfCondition = _perfCondition;
@@ -62,9 +62,9 @@ public class Lot
         return bookletId;
     }
 
-    public int GetLotId()
+    public int GetLotNumber()
     {
-        return lotId;
+        return lotNumber;
     }
 
     public string GetDescription()
@@ -113,9 +113,9 @@ public class Lot
         vendorId = _vendorId;
     }
 
-    public void SetLotId(int _lotId)
+    public void SetLotId(int _lotNumber)
     {
-        lotId = _lotId;
+        lotNumber = _lotNumber;
     }
 
     public void SetMemberReference(string _memberReference)
@@ -155,9 +155,9 @@ public class Lot
         DAL.CreateLot(this);
     }
 
-    public void UpdateLot(int _auctionId, int _vendroId, int _bookletId, int _lotId, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, decimal _reservePrice)
+    public void UpdateLot(int _auctionId, int _vendroId, int _bookletId, int _lotNumber, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, decimal _reservePrice)
     {
-        DAL.UpdateLot(new Lot(id, _auctionId, _vendroId, _bookletId, _lotId, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
+        DAL.UpdateLot(new Lot(id, _auctionId, _vendroId, _bookletId, _lotNumber, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
     }
 
     public void DeleteLot()
