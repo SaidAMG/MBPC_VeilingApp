@@ -1,5 +1,6 @@
 ﻿using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
+using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
@@ -87,14 +88,36 @@ using MBPC_VeilingApp.Classes;
 //    Console.WriteLine($"{b.GetId()},{b.GetName()},{b.GetStartDate()},{b.GetDescription()} {b.GetEndDate()}");
 //}
 
-// implementatie komt hier
-
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
 
+//----------------------------------------------------------------------------------------------------> Test Lot2Mem
+
+//DAL.RefreshDAL();
+////  Maak een bieding op een lot. pakt de 1e member en lot uit het DAL.
+//Lot2Mem lot2Mem = new Lot2Mem(DAL.members.FirstOrDefault(), DAL.lots.FirstOrDefault(), DateTime.Now, 2.60M);
+////DAL.CreateLot2Mem(lot2Mem);
+////DAL.UpdateLot2Mem(lot2Mem);
+////DAL.DeleteLot2Mem(lot2Mem);
+
+//Console.WriteLine("|Buyer's First Name".PadRight(20) + "|Lot Description".PadRight(101) + "|Time Stamp".PadRight(25) + "|Bid Price".PadRight(20)+ "|");
+//Console.WriteLine("-----------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+//foreach (Lot2Mem l in DAL.lot2mems)
+//{
+//    string buyerFirstName = "|" + l.GetBuyerId().GetFirstName();
+//    string lotDescription = "|" + l.GetLotId().GetDescription();
+//    string timeStamp = "|" + l.GetTimeStamp().ToString(); // Converteer naar een string als dat nodig is
+//    string price = "|" + l.GetPrice().ToString(); // Converteer naar een string als dat nodig is
+
+//    // Afdrukken met kolommen
+//    Console.WriteLine(buyerFirstName.PadRight(20) + lotDescription.PadRight(40) + timeStamp.PadRight(25) + price.PadRight(20) + "|");
+//}
+
+//----------------------------------------------------------------------------------------------------> Test Lot2Mem
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
 
 // implementatie komt hier
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
+
