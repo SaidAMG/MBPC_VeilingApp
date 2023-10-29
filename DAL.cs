@@ -27,7 +27,7 @@ namespace MBPC_VeilingApp
             ReadMembers();
             ReadAuctions();
             ReadLots();
-            //lot2mem
+            ReadLot2Mems();
         }
 
         //CRUD Booklet
@@ -428,85 +428,25 @@ namespace MBPC_VeilingApp
         // Maakt een instantie Lot2Mem aan in de database.
         public static void CreateLot2Mem(Lot2Mem _lot2Mem)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string qry = "INSERT INTO LOT2MEM(buyerId, lotId ,timeStamp, price) VALUES(@buyerId, @lotId ,@timeStamp, @price)";
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(qry, connection))
-                {
-                    //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
-                    command.Parameters.AddWithValue("@buyerId", _lot2Mem.GetBuyerId());
-                    command.Parameters.AddWithValue("@lotId", _lot2Mem.GetLotId());
-                    command.Parameters.AddWithValue("@timeStamp", _lot2Mem.GetTimeStamp());
-                    command.Parameters.AddWithValue("@price", _lot2Mem.GetPrice());
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
+            // implementatie
         }
 
         // Haalt alle Lot2Mem instanties uit de database en voegt ze toe aan de lijst van lot2Mems.
         public static void ReadLot2Mems()
         {
-            lot2mems.Clear();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string qry = "SELECT buyerId, lotId ,timeStamp, price FROM LOT2MEM";
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(qry, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            Lot2Mem lot2mem = new Lot2Mem(
-                                members.FirstOrDefault(m => m.GetId() == (int)reader["buyerId"]),
-                                lots.FirstOrDefault(l => l.GetId() == (int)reader["lotId"]),
-                                (DateTime)reader["timeStamp"],
-                                (decimal)reader["price"]);
-
-                            lot2mems.Add(lot2mem);
-                        }
-                    }
-                }
-                connection.Close();
-            }
+            // implementatie
         }
 
         // Update een instantie Lot2Mem in de database aan de hand van het Id.
         public static void UpdateLot2Mem(Lot2Mem _lot2Mem)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string qry = "UPDATE LOT2MEM SET timeStamp = @timeStamp, price = @price WHERE buyerId = @buyerId, lotId = @lotId";
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(qry, connection))
-                {
-                    command.Parameters.AddWithValue("@buyerId", _lot2Mem.GetBuyerId().GetId());
-                    command.Parameters.AddWithValue("@lotId", _lot2Mem.GetLotId().GetId());
-                    command.Parameters.AddWithValue("@timeStamp", _lot2Mem.GetTimeStamp());
-                    command.Parameters.AddWithValue("@price", _lot2Mem.GetPrice());
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
+            // implementatie
         }
 
         // Verwijdert een instantie Lot2Mem uit de database aan de hand van het Id.
         public static void DeleteLot2Mem(Lot2Mem _lot2Mem)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string qry = "DELETE FROM LOT2MEM WHERE buyerId = @buyerId, lotId = @lotId";
-                connection.Open();
-                using (SqlCommand command = new SqlCommand(qry, connection))
-                {
-                    command.Parameters.AddWithValue("@buyerId", _lot2Mem.GetBuyerId());
-                    command.Parameters.AddWithValue("@lotId", _lot2Mem.GetLotId());
-                    command.ExecuteNonQuery();
-                }
-                connection.Close();
-            }
+            // implementatie
         }
 
     }
