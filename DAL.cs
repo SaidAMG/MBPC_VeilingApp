@@ -1,6 +1,7 @@
 ﻿using MBPC_VeilingApp.Classes;
+using System;
 using System.Data.SqlClient;
-using System.Diagnostics.Metrics;
+using System.Diagnostics;
 
 namespace MBPC_VeilingApp
 {
@@ -15,7 +16,7 @@ namespace MBPC_VeilingApp
         public static List<Member> members = new List<Member>();
         public static List<Lot> lots = new List<Lot>();
         public static List<Auction> auctions = new List<Auction>();
-        // Lijst lot2Mems komt hier
+        public static List<Lot2Mem> lot2mems = new List<Lot2Mem>();
 
         // De RefreshDal functie stelt ons in staat om de InCodeDatabase te synchroniseren met de SQLDatabase.
         // Het is vaak handig om deze functie aan te roepen nadat je een CRUD-operatie op een van de tabellen hebt uitgevoerd.
@@ -26,7 +27,7 @@ namespace MBPC_VeilingApp
             ReadMembers();
             ReadAuctions();
             ReadLots();
-            //lot2mem
+            ReadLot2Mems();
         }
 
         //CRUD Booklet
@@ -222,6 +223,7 @@ namespace MBPC_VeilingApp
             }
         }
 
+        
         //CRUD Lot
         // Maakt een instantie Lot aan in de database.
         public static void CreateLot(Lot _lot)
@@ -276,7 +278,7 @@ namespace MBPC_VeilingApp
                                 (int)reader["verified"],
                                 (decimal)reader["reservePrice"],
                                 reader["memberReference"] == DBNull.Value ? string.Empty : (string)reader["memberReference"]);
-                           
+
                             lots.Add(lot);
                         }
                     }
@@ -311,9 +313,8 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-    
 
-    // Verwijdert een instantie Lot uit de database aan de hand van het Id.
+        // Verwijdert een instantie Lot uit de database aan de hand van het Id.
         public static void DeleteLot(Lot _lot)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -329,6 +330,7 @@ namespace MBPC_VeilingApp
             }
         }
 
+        
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.
         public static void CreateAuction(Auction _auction)
@@ -350,7 +352,6 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
         public static void ReadAuctions()
@@ -384,69 +385,68 @@ namespace MBPC_VeilingApp
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.
-            public static void UpdateAuction(Auction _auction)
+        public static void UpdateAuction(Auction _auction)
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    string qry = "UPDATE AUCTION SET name = @name, description = @description, startDate = @startDate, endDate = @endDate WHERE id = @id";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(qry, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", _auction.GetId());
-                        command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
-                        command.Parameters.AddWithValue("@name", _auction.GetName());
-                        command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
-                        command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
-                        command.Parameters.AddWithValue("@description", _auction.GetDescription());
-                        command.ExecuteNonQuery();
-                    }
-                    connection.Close();
+                    command.Parameters.AddWithValue("@id", _auction.GetId());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                    command.Parameters.AddWithValue("@name", _auction.GetName());
+                    command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
+                    command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
+                    command.Parameters.AddWithValue("@description", _auction.GetDescription());
+                    command.ExecuteNonQuery();
                 }
+                connection.Close();
             }
-    
+        }
 
         // Verwijdert een instantie Auction uit de database aan de hand van het Id.
-            public static void DeleteAuction(Auction _auction)
+        public static void DeleteAuction(Auction _auction)
+        {
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                string qry = "DELETE FROM AUCTION WHERE id = @id";
+                connection.Open();
+                using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    string qry = "DELETE FROM AUCTION WHERE id = @id";
-                    connection.Open();
-                    using (SqlCommand command = new SqlCommand(qry, connection))
-                    {
-                        command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
-                        command.ExecuteNonQuery();
-                    }
-                    connection.Close();
+                    command.Parameters.AddWithValue("@id", _auction.GetAuctioneerId());
+                    command.ExecuteNonQuery();
                 }
-
+                connection.Close();
             }
 
+        }
 
-            //CRUD Lot2Mem
-            // Maakt een instantie Lot2Mem aan in de database.
-            public static void CreateLot2Mem(/*Lot2Mem _lot2Mem*/)
+
+        //CRUD Lot2Mem
+        // Maakt een instantie Lot2Mem aan in de database.
+        public static void CreateLot2Mem(Lot2Mem _lot2Mem)
         {
-            // Implementatie hier
+            // implementatie komt hier 
         }
 
         // Haalt alle Lot2Mem instanties uit de database en voegt ze toe aan de lijst van lot2Mems.
         public static void ReadLot2Mems()
         {
-            // Implementatie hier
+            // implementatie komt hier 
         }
 
         // Update een instantie Lot2Mem in de database aan de hand van het Id.
-        public static void UpdateLot2Mem(/*Lot2Mem _lot2Mem*/)
+        public static void UpdateLot2Mem(Lot2Mem _lot2Mem)
         {
-            // Implementatie hier
+            // implementatie komt hier 
         }
 
         // Verwijdert een instantie Lot2Mem uit de database aan de hand van het Id.
-        public static void DeleteLot2Mem(/*Lot2Mem _lot2Mem*/)
+        public static void DeleteLot2Mem(Lot2Mem _lot2Mem)
         {
-            // Implementatie hier
+            // implementatie komt hier 
         }
 
     }

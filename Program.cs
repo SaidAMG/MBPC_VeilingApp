@@ -1,5 +1,6 @@
 ﻿using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
+using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
@@ -53,7 +54,7 @@ using MBPC_VeilingApp.Classes;
 //{
 //    lot = new Lot(3679, 1, 42, 1, 1, "the queen", "AP", "Good", 11, 50, "test");
 //}
-//catch(ArgumentException ex)
+//catch (ArgumentException ex)
 //{
 //    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
 //}
@@ -68,7 +69,7 @@ using MBPC_VeilingApp.Classes;
 
 //foreach (Lot l in lots)
 //{
-//   Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotNumber()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
+//    Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotNumber()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
 //}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
@@ -87,14 +88,18 @@ using MBPC_VeilingApp.Classes;
 //    Console.WriteLine($"{b.GetId()},{b.GetName()},{b.GetStartDate()},{b.GetDescription()} {b.GetEndDate()}");
 //}
 
-// implementatie komt hier
-
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
 
+//----------------------------------------------------------------------------------------------------> Test Lot2Mem
+
+// implementatie komt hier 
+
+//----------------------------------------------------------------------------------------------------> Test Lot2Mem
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
 
 // implementatie komt hier
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
+

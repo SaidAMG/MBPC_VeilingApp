@@ -10,9 +10,9 @@
         public Booklet(int _bookletId, string _name, string _pane, string _description)
         {
             // Controlle om de kijken of de opgegeven argumenten voldoen aan de database regels
-            if (_name.Length > 10){ throw new ArgumentException("Name should be at most 10 characters long.");}
-            if (_pane.Length > 10){throw new ArgumentException("Pane should be at most 10 characters long.");}
-            if (_description.Length > 50){throw new ArgumentException("Description should be at most 50 characters long.");}
+            if (_name.Length > 10) { throw new ArgumentException("Name should be at most 10 characters long."); }
+            if (_pane.Length > 10) { throw new ArgumentException("Pane should be at most 10 characters long."); }
+            if (_description.Length > 50) { throw new ArgumentException("Description should be at most 50 characters long."); }
 
             bookletId = _bookletId;
             name = _name;
@@ -20,7 +20,7 @@
             description = _description;
             //CreateBookletDAL();
         }
-        
+
         //Getters
         public int GetId()
         {
