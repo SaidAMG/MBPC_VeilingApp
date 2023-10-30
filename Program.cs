@@ -47,23 +47,23 @@ using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
-DAL.RefreshDAL()
+//DAL.RefreshDAL()
 
 // implementatie komt hier 
-Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
+//Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
 
-try
-{
-    lot = new Lot(3679, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 1, "the queen", "AP", "Good", 11, 50, "test");
-}
-catch (ArgumentException ex)
-{
-    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
-}
+//try
+//{
+//    lot = new Lot(3679, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 1, "the queen", "AP", "Good", 11, 50, "test");
+//}
+//catch (ArgumentException ex)
+//{
+//    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
+//}
 
-lot.CreateLot();
+//lot.CreateLot();
 
-Console.WriteLine(Lot.ReadLot);
+//Console.WriteLine(Lot.ReadLot);
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
