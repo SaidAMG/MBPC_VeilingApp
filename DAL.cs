@@ -143,7 +143,7 @@ namespace MBPC_VeilingApp
         }
 
         // Haalt alle Member instanties uit de database en voegt ze toe aan de lijst van members.
-        public static void ReadMembers()
+        public static List<Member> ReadMembers()
         {
             members.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -176,6 +176,7 @@ namespace MBPC_VeilingApp
                 }
                 connection.Close();
             }
+            return members;
         }
 
         // Update een instantie Member in de database aan de hand van het Id.

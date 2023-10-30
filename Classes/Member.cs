@@ -170,6 +170,11 @@ namespace MBPC_VeilingApp.Classes
             DAL.CreateMember(this);
         }
 
+        public static List<Member> ReadMemeberDal()
+        {
+            return DAL.ReadMembers();
+        }
+
         public void UpdateMemberDAL(string _firstName, string _lastName, string _address, string _city, string _zipCode, string _country, int _memberNumber, string _email, DateTime _birthDate, DateTime _memberDate, string _telephoneNumber)
         {
             DAL.UpdateMember(new Member(id, _firstName, _lastName, _address, _city, _zipCode, _country, _memberNumber, _email, _birthDate, _memberDate, _telephoneNumber));

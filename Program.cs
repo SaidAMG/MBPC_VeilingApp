@@ -18,6 +18,7 @@ using MBPC_VeilingApp.Classes;
 //DAL.DeleteBooklet(booklet);
 //DAL.ReadBooklets();
 
+
 //List<Booklet> booklets = DAL.booklets;
 
 //foreach(Booklet b in booklets)
@@ -38,7 +39,7 @@ using MBPC_VeilingApp.Classes;
 
 //List<Member> members = DAL.members;
 
-//foreach (Member m in members)
+//foreach (Member m in Member.ReadMemeberDal())
 //{
 //    Console.WriteLine($"{m.GetId()},{m.GetFirstName()},{m.GetLastName()},{m.GetAddress()},{m.GetZipCode()},{m.GetCountry()},{m.GetMemberNumber()},{m.GetEmail()},{m.GetBirthDate()},{m.GetMemberNumber()},{m.GetTelephoneNumber()} ");
 //}
