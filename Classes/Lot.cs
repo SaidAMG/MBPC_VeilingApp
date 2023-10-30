@@ -4,9 +4,9 @@ using System;
 public class Lot
 {
     private int id;
-    private int auctionId;
-    private int vendorId;
-    private int bookletId;
+    private Auction auctionId;
+    private Member vendorId;
+    private Booklet bookletId;
     private int lotNumber;
     private string description;
     private string perfType;
@@ -15,7 +15,7 @@ public class Lot
     private decimal reservePrice;
     private string memberReference;
 
-    public Lot(int _id, int _auctionId, int _vendorId, int _bookletId, int _lotNumber, string _description, string _perfType, string _perfCondition, int _verified, decimal _reservePrice, string _memberReference)
+    public Lot(int _id, Auction _auctionId, Member _vendorId, Booklet _bookletId, int _lotNumber, string _description, string _perfType, string _perfCondition, int _verified, decimal _reservePrice, string _memberReference)
     {
         // Controle om de kijken of de opgegeven argumenten voldoen aan de database regels
         if (_memberReference.Length > 10) { throw new ArgumentException("MemberReference should be at most 10 characters long."); }
@@ -47,17 +47,17 @@ public class Lot
         return id;
     }
 
-    public int GetAuctionId()
+    public Auction GetAuctionId()
     {
         return auctionId;
     }
 
-    public int GetVendorId()
+    public Member GetVendorId()
     {
         return vendorId;
     }
 
-    public int GetBookletId()
+    public Booklet GetBookletId()
     {
         return bookletId;
     }
@@ -103,12 +103,12 @@ public class Lot
         id = _id;
     }
 
-    public void SetAuctionId(int _auctionId)
+    public void SetAuctionId(Auction _auctionId)
     {
         auctionId = _auctionId;
     }
 
-    public void SetVendorId(int _vendorId)
+    public void SetVendorId(Member _vendorId)
     {
         vendorId = _vendorId;
     }
@@ -155,9 +155,14 @@ public class Lot
         DAL.CreateLot(this);
     }
 
-    public void UpdateLot(int _auctionId, int _vendroId, int _bookletId, int _lotNumber, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, decimal _reservePrice)
+    public static List<Lot> ReadLot()
     {
-        DAL.UpdateLot(new Lot(id, _auctionId, _vendroId, _bookletId, _lotNumber, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
+        return DAL.ReadLots();
+    }
+
+    public void UpdateLot(Auction _auctionId, Member _vendorId, Booklet _bookletId, int _lotNumber, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, decimal _reservePrice)
+    {
+        DAL.UpdateLot(new Lot(id, _auctionId, _vendorId, _bookletId, _lotNumber, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
     }
 
     public void DeleteLot()
