@@ -4,7 +4,7 @@ using System;
 public class Lot
 {
     private int id;
-    private int auctionId;
+    public int auctionId;
     private int vendorId;
     private int bookletId;
     private int lotNumber;
