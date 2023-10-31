@@ -343,7 +343,7 @@ namespace MBPC_VeilingApp
                 {
                     //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
                     command.Parameters.AddWithValue("@name", _auction.GetName());
-                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId().GetId());
                     command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
                     command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
                     command.Parameters.AddWithValue("@description", _auction.GetDescription());
