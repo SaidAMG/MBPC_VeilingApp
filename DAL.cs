@@ -1,5 +1,6 @@
 ﻿using MBPC_VeilingApp.Classes;
 using System;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
@@ -235,10 +236,10 @@ namespace MBPC_VeilingApp
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
-                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
-                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
-                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber()); // moet "@lotNumber" zijn en "lotNumber"/"@lotNumber" in de qry
+                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId().GetId());
+                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId().GetId());
+                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId().GetId());
+                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
@@ -252,7 +253,7 @@ namespace MBPC_VeilingApp
         }
 
         // Haalt alle Lot instanties uit de database en voegt ze toe aan de lijst van lots.
-        public static void ReadLots()
+        public static List<Lot> ReadLots()
         {
             // Implementatie hier
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -268,10 +269,10 @@ namespace MBPC_VeilingApp
                         {
                             Lot lot = new Lot(
                                 (int)reader["id"],
-                                (int)reader["auctionId"],
-                                (int)reader["vendorId"],
-                                (int)reader["bookletId"],
-                                (int)reader["lotNumber"], // moet "lotNumber" zijn en "lotNumber" in de qry
+                                auctions.FirstOrDefault(a => a.GetId() == (int)reader["auctionId"]),
+                                members.FirstOrDefault(m => m.GetId() == (int)reader["vendorId"]),
+                                booklets.FirstOrDefault(b => b.GetId() == (int)reader["bookletId"]),
+                                (int)reader["lotNumber"],
                                 (string)reader["description"],
                                 (string)reader["perfType"],
                                 (string)reader["perfCondition"],
@@ -285,6 +286,7 @@ namespace MBPC_VeilingApp
                 }
                 connection.Close();
             }
+            return lots;
         }
 
         // Update een instantie Lot in de database aan de hand van het Id.
@@ -297,10 +299,10 @@ namespace MBPC_VeilingApp
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
                     command.Parameters.AddWithValue("@id", _lot.GetId());
-                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId());
-                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId());
-                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId());
-                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());// moet "@lotNumber" zijn en "lotNumber = @lotNumber" in de qry
+                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId().GetId);
+                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId().GetId);
+                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId().GetId);
+                    command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());
                     command.Parameters.AddWithValue("@perfCondition", _lot.GetPerfCondition());
