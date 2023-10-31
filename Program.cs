@@ -47,30 +47,23 @@ using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
+//DAL.RefreshDAL()
+
 // implementatie komt hier 
-//Lot lot = new Lot(0, 0, 0, 0, 0, "", "", "", 0, 0, "");
+//Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
 
 //try
 //{
-//    lot = new Lot(3679, 1, 42, 1, 1, "the queen", "AP", "Good", 11, 50, "test");
+//    lot = new Lot(3679, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 1, "the queen", "AP", "Good", 11, 50, "test");
 //}
 //catch (ArgumentException ex)
 //{
 //    Console.WriteLine("Er is een uitzondering opgetreden: " + ex.Message);
 //}
 
+//lot.CreateLot();
 
-//DAL.CreateLot(lot);
-//DAL.UpdateLot(lot);
-//DAL.DeleteLot(lot);
-//DAL.ReadLots();
-
-//List<Lot> lots = DAL.lots;
-
-//foreach (Lot l in lots)
-//{
-//    Console.WriteLine($"{l.GetId()},{l.GetAuctionId()},{l.GetVendorId()},{l.GetBookletId()},{l.GetLotNumber()},{l.GetDescription()},{l.GetPerfType()},{l.GetPerfCondition()},{l.GetVerified()},{l.GetReservePrice()},{l.GetMemberReference()}");
-//}
+//Console.WriteLine(Lot.ReadLot);
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
