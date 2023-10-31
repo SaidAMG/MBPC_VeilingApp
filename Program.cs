@@ -1,5 +1,6 @@
 ﻿using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
+using System;
 using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
@@ -74,19 +75,13 @@ using System.Data.SqlClient;
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
-//Auction auction = new Auction(3, 1, "A215", "2022 Fall Auction", DateTime.Now, DateTime.Now);
+List<Lot> sortedLots = null;
 
-//DAL.CreateAuction(auction);
-//DAL.UpdateAuction(auction);
-//DAL.DeleteAuction(auction);
-//DAL.ReadAuctions();
+for (int i = 0; i < sortedLots.Count; i++)
+{
+    sortedLots[i].SetLotId(i + 1); // Stel een nieuw lotnummer in 
+}
 
-//List<Auction> auctions = DAL.auctions;
-
-//foreach (Auction b in auctions)
-//{
-//    Console.WriteLine($"{b.GetId()},{b.GetName()},{b.GetStartDate()},{b.GetDescription()} {b.GetEndDate()}");
-//}
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
