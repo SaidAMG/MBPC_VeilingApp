@@ -3,7 +3,7 @@
     public class Auction
     {
         private int id;
-        private int auctioneerId;
+        private Member auctioneerId;
         private string name;
         private string description;
         private DateTime startDate;
