@@ -85,6 +85,11 @@
             DAL.DeleteAuction(this);
         }
 
+        public static List<Auction> ReadAuction()
+        {
+            return DAL.ReadAuctions();
+        }
+
     }
 }
 
