@@ -113,7 +113,7 @@ public class Lot
         vendorId = _vendorId;
     }
 
-    public void SetLotId(int _lotNumber)
+    public void SetLotNumber(int _lotNumber)
     {
         lotNumber = _lotNumber;
     }
