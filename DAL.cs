@@ -369,7 +369,7 @@ namespace MBPC_VeilingApp
                         {
                             Auction auction = new Auction(
                                 (int)reader["id"],
-                                (int)reader["auctioneerId"],
+                                members.FirstOrDefault(a => a.GetId() == (int)reader["auctioneerId"]),
                                 (string)reader["name"],
                                 (string)reader["description"],
                                 (DateTime)reader["startDate"],
