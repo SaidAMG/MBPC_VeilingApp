@@ -170,14 +170,5 @@ public class Lot
         DAL.DeleteLot(this);
     }
 
-
-
-
-
-
-
-
-
-
 }
 
