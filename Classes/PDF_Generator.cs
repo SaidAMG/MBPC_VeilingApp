@@ -24,11 +24,10 @@ public class PDFGenerator
         DAL.RefreshDAL(); // Zorg ervoor dat de gegevens in de DAL zijn bijgewerkt
 
         // Sorteer de lots op BookletID
-        List<Lot> lots = DAL.lots.OrderBy(l => l.GetBookletId().GetId()).ToList();
-
+        List<Lot> lotList = Lot.ReadLot();
         int currentBookletId = -1; // Een sentinelwaarde om te controleren wanneer de booklet verandert
 
-        foreach (Lot lot in lots)
+        foreach (Lot lot in lotList)
         {
             int bookletId = lot.GetBookletId().GetId();
 
