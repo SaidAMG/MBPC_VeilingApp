@@ -2,6 +2,8 @@
 using MBPC_VeilingApp.Classes;
 using System;
 using System.Data.SqlClient;
+using System.Reflection.Metadata;
+using System.Security.Cryptography;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
@@ -68,13 +70,18 @@ using System.Data.SqlClient;
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
-List<Lot> sortedLots = null;
+List<Lot> sortedLots = Lot.ReadLot();
 
 for (int i = 0; i < sortedLots.Count; i++)
 {
     sortedLots[i].SetLotId(i + 1); // Stel een nieuw lotnummer in 
+    Console.WriteLine(sortedLots[i].GetLotNumber());
 }
 
+foreach (Lot lot in sortedLots)
+{
+    DAL.UpdateLot(lot);
+}
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
 
