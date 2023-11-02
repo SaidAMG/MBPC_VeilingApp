@@ -47,9 +47,9 @@ using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
-//DAL.RefreshDAL()
+DAL.RefreshDAL();
 
-// implementatie komt hier 
+//// implementatie komt hier 
 //Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
 
 //try
@@ -64,6 +64,19 @@ using System.Data.SqlClient;
 //lot.CreateLot();
 
 //Console.WriteLine(Lot.ReadLot);
+// Eerst de lots ophalen uit je DAL of ergens anders
+
+List<Lot> lots = Lot.ReadLot().Where(l => l.GetAuctionId().GetId() == 1).ToList(); // Verondersteld dat je de ReadLot-methode hebt toegevoegd in de klasse
+
+// De LotSorter-klasse gebruiken om de lots te sorteren op auctionId en daarna op naam (name)
+Sort lotSorter = new Sort();
+List<Lot> sortedLots = lotSorter.SortLotsByAuctionIdAndBookletName(lots);
+
+foreach (Lot l in sortedLots)
+{
+    Console.WriteLine($"LotId:{l.GetId()} Name: {l.GetBookletId().GetName()}");
+}
+//Nu heb je de gesorteerde lots in de 'sortedLots'-lijst, gesorteerd op auctionId en vervolgens op naam.
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
