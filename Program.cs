@@ -26,20 +26,13 @@
 
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
-//Member member = new Member(82, "Dennis", "Bückers", "Nieuw Eyckholt", "Heerlen", "6419DJ", "Holland", 1401, "2105449buckers@zuyd.nl", DateTime.Parse("1998-07-19"), DateTime.Parse("2023-10-24"), "0625076277");
 
-//DAL.CreateMember(member);
-//DAL.ReadMembers();
-//DAL.UpdateMember(member);
-//DAL.DeleteMember(member);
+// Roep de PDFGenerator aan om het PDF-document te genereren
+PDFGenerator.GeneratePDF();
 
+Console.WriteLine("PDF is aangemaakt, druk op een toets om af te sluiten...");
+Console.ReadKey();
 
-//List<Member> members = DAL.members;
-
-//foreach (Member m in members)
-//{
-//    Console.WriteLine($"{m.GetId()},{m.GetFirstName()},{m.GetLastName()},{m.GetAddress()},{m.GetZipCode()},{m.GetCountry()},{m.GetMemberNumber()},{m.GetEmail()},{m.GetBirthDate()},{m.GetMemberNumber()},{m.GetTelephoneNumber()} ");
-//}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
