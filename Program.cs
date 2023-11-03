@@ -1,7 +1,4 @@
-﻿using MBPC_VeilingApp;
-using MBPC_VeilingApp.Classes;
-using System.Data.SqlClient;
-
+﻿
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
 //{
@@ -47,9 +44,9 @@ using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
-//DAL.RefreshDAL()
+//DAL.RefreshDAL();
 
-// implementatie komt hier 
+//// implementatie komt hier 
 //Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
 
 //try
@@ -64,6 +61,39 @@ using System.Data.SqlClient;
 //lot.CreateLot();
 
 //Console.WriteLine(Lot.ReadLot);
+
+//functie voor testen Sort class
+// Eerst de lots ophalen uit je DAL of ergens anders
+
+//List<Lot> lots = Lot.ReadLot().Where(l => l.GetAuctionId().GetId() == 1).ToList(); // Verondersteld dat je de ReadLot-methode hebt toegevoegd in de klasse
+//lots = RandomizeList(lots);
+
+//List < Lot > sortedLots = Sort.SortLotsByName(lots);
+
+//// Functie om de lijst te randomizen
+//static List<T> RandomizeList<T>(List<T> list)
+//{
+//    Random random = new Random();
+//    List<T> randomizedList = new List<T>(list);
+
+//    int n = randomizedList.Count;
+//    while (n > 1)
+//    {
+//        n--;
+//        int k = random.Next(n + 1);
+//        T value = randomizedList[k];
+//        randomizedList[k] = randomizedList[n];
+//        randomizedList[n] = value;
+//    }
+
+//    return randomizedList;
+//}
+
+//foreach (Lot l in sortedLots)
+//{
+//    Console.WriteLine($"LotId:{l.GetId()} Name: {l.GetBookletId().GetName()}");
+//}
+
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
