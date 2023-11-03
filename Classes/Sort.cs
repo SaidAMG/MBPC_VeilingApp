@@ -1,7 +1,4 @@
-﻿using MBPC_VeilingApp;
-using System.Text.RegularExpressions;
-
-namespace MBPC_VeilingApp.Classes
+﻿namespace MBPC_VeilingApp.Classes
 {
     internal class Sort
     {

@@ -1,9 +1,4 @@
-﻿using MBPC_VeilingApp;
-using MBPC_VeilingApp.Classes;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using static MBPC_VeilingApp.Classes.Sort;
-
+﻿
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
 //{
