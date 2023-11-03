@@ -5,70 +5,87 @@ namespace MBPC_VeilingApp.Classes
 {
     internal class Sort
     {
-        private class CustomComparer : IComparer<List<object>>
+        public static List<Lot> SortLotsByName(List<Lot> lots)
         {
-            public int Compare(List<object> x, List<object> y)
+            List<Lot> sortedLots = lots.OrderBy(lot => lot.GetBookletId().GetName(), new BookletNameComparer()).ToList();
+            return sortedLots;
+        }
+
+        private class BookletNameComparer : IComparer<string>
+        {
+            public int Compare(string x, string y)
             {
-                for (int i = 0; i < Math.Min(x.Count, y.Count); i++)
-                {
-                    if (x[i] is int && y[i] is int)
-                    {
-                        int numX = (int)x[i];
-                        int numY = (int)y[i];
-
-                        int result = numX.CompareTo(numY);
-
-                        if (result != 0)
-                        {
-                            return result;
-                        }
-                    }
-                    else
-                    {
-                        string strX = x[i].ToString();
-                        string strY = y[i].ToString();
-
-                        int result = strX.CompareTo(strY);
-
-                        if (result != 0)
-                        {
-                            return result;
-                        }
-                    }
-                }
-
-                return x.Count.CompareTo(y.Count);
+                return AlphanumericComparer.Compare(x, y);
             }
         }
 
-        public List<Lot> SortLotsByAuctionIdAndBookletName(List<Lot> lots)
+        private static class AlphanumericComparer
         {
-            List<Lot> sortedLotsByName = lots;
-            List<Lot> sorted = sortedLotsByName.OrderBy(lot =>
+            public static int Compare(string x, string y)
             {
-                string bookletName = lot.GetBookletId().GetName();
-                List<string> parts = Regex.Split(bookletName, @"(?<=[0-9])(?=[A-Za-z])").ToList();
-                List<object> parsedParts = new List<object>();
+                int indexX = 0;
+                int indexY = 0;
 
-                foreach (string part in parts)
+                while (indexX < x.Length && indexY < y.Length)
                 {
-                    if (int.TryParse(part, out int number))
+                    char charX = x[indexX];
+                    char charY = y[indexY];
+
+                    if (charX == charY)
                     {
-                        parsedParts.Add(number);
+                        indexX++;
+                        indexY++;
+                    }
+                    else if (charX >= '0' && charX <= '9' && charY >= '0' && charY <= '9')
+                    {
+                        string numX = GetNumber(x, ref indexX);
+                        string numY = GetNumber(y, ref indexY);
+
+                        int intX = int.Parse(numX);
+                        int intY = int.Parse(numY);
+
+                        int numComparison = intX.CompareTo(intY);
+                        if (numComparison != 0)
+                        {
+                            return numComparison;
+                        }
                     }
                     else
                     {
-                        parsedParts.Add(part);
+                        return charX.CompareTo(charY);
                     }
                 }
 
-                return parsedParts;
-            }, new CustomComparer()).ToList();
+                if (indexX < x.Length)
+                {
+                    return 1;
+                }
+                if (indexY < y.Length)
+                {
+                    return -1;
+                }
 
-            return sortedLotsByName;
+                return 0;
+            }
+
+            private static string GetNumber(string str, ref int index)
+            {
+                int startIndex = index;
+                while (index < str.Length && Char.IsDigit(str[index]))
+                {
+                    index++;
+                }
+                return str.Substring(startIndex, index - startIndex);
+            }
         }
     }
 }
+
+
+
+
+
+
 
 
 

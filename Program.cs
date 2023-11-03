@@ -1,6 +1,8 @@
 ﻿using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
+using System.Collections.Generic;
 using System.Data.SqlClient;
+using static MBPC_VeilingApp.Classes.Sort;
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
@@ -69,16 +71,34 @@ using System.Data.SqlClient;
 // Eerst de lots ophalen uit je DAL of ergens anders
 
 //List<Lot> lots = Lot.ReadLot().Where(l => l.GetAuctionId().GetId() == 1).ToList(); // Verondersteld dat je de ReadLot-methode hebt toegevoegd in de klasse
+//lots = RandomizeList(lots);
 
-//// De LotSorter-klasse gebruiken om de lots te sorteren op auctionId en daarna op naam (name)
-//Sort lotSorter = new Sort();
-//List<Lot> sortedLots = lotSorter.SortLotsByAuctionIdAndBookletName(lots);
+//List < Lot > sortedLots = Sort.SortLotsByName(lots);
+
+//// Functie om de lijst te randomizen
+//static List<T> RandomizeList<T>(List<T> list)
+//{
+//    Random random = new Random();
+//    List<T> randomizedList = new List<T>(list);
+
+//    int n = randomizedList.Count;
+//    while (n > 1)
+//    {
+//        n--;
+//        int k = random.Next(n + 1);
+//        T value = randomizedList[k];
+//        randomizedList[k] = randomizedList[n];
+//        randomizedList[n] = value;
+//    }
+
+//    return randomizedList;
+//}
 
 //foreach (Lot l in sortedLots)
 //{
 //    Console.WriteLine($"LotId:{l.GetId()} Name: {l.GetBookletId().GetName()}");
 //}
-//Nu heb je de gesorteerde lots in de 'sortedLots'-lijst, gesorteerd op auctionId en vervolgens op naam.
+
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
