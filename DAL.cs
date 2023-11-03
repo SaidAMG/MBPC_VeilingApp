@@ -344,7 +344,7 @@ namespace MBPC_VeilingApp
                 {
                     //command.Parameters.AddWithValue("@auctioneerID",_auction.GetId());
                     command.Parameters.AddWithValue("@name", _auction.GetName());
-                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId());
+                    command.Parameters.AddWithValue("@auctioneerId", _auction.GetAuctioneerId().GetId());
                     command.Parameters.AddWithValue("@startDate", _auction.GetStartDate());
                     command.Parameters.AddWithValue("@endDate", _auction.GetEndDate());
                     command.Parameters.AddWithValue("@description", _auction.GetDescription());
@@ -355,7 +355,7 @@ namespace MBPC_VeilingApp
         }
 
         // Haalt alle Auction instanties uit de database en voegt ze toe aan de lijst van auctions.
-        public static void ReadAuctions()
+        public static List<Auction> ReadAuctions()
         {
             auctions.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -370,7 +370,7 @@ namespace MBPC_VeilingApp
                         {
                             Auction auction = new Auction(
                                 (int)reader["id"],
-                                (int)reader["auctioneerId"],
+                                members.FirstOrDefault(a => a.GetId() == (int)reader["auctioneerId"]),
                                 (string)reader["name"],
                                 (string)reader["description"],
                                 (DateTime)reader["startDate"],
@@ -382,7 +382,7 @@ namespace MBPC_VeilingApp
                 }
                 connection.Close();
             }
-
+            return auctions;
         }
 
         // Update een instantie Auction in de database aan de hand van het Id.

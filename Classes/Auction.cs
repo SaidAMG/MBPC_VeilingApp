@@ -3,13 +3,13 @@
     public class Auction
     {
         private int id;
-        private int auctioneerId;
+        private Member auctioneerId;
         private string name;
         private string description;
         private DateTime startDate;
         private DateTime endDate;
 
-        public Auction(int _id, int _auctioneerId, string _name, string _description, DateTime _startDate, DateTime _endDate)
+        public Auction(int _id, Member _auctioneerId, string _name, string _description, DateTime _startDate, DateTime _endDate)
         {
             // Controlle om de kijken of de opgegeven argumenten voldoen aan de database regels
             if (_name.Length > 10) { throw new ArgumentException("Name should be at most 10 characters long."); }
@@ -28,7 +28,7 @@
         {
             return id;
         }
-        public int GetAuctioneerId()
+        public Member GetAuctioneerId()
         {
             return auctioneerId;
         }
@@ -75,7 +75,7 @@
         {
             DAL.CreateAuction(this);
         }
-        public void UpdateAuctionDAL(int _auctioneerId, string _name, string _description, DateTime _startDate, DateTime _endDate)
+        public void UpdateAuctionDAL(Member _auctioneerId, string _name, string _description, DateTime _startDate, DateTime _endDate)
         {
             DAL.UpdateAuction(new Auction(id, _auctioneerId, _name, _description, _startDate, _endDate));
 
@@ -83,6 +83,11 @@
         public void DeleteAuctionDAL()
         {
             DAL.DeleteAuction(this);
+        }
+
+        public static List<Auction> ReadAuction()
+        {
+            return DAL.ReadAuctions();
         }
 
     }
