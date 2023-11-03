@@ -1,4 +1,10 @@
-﻿
+using MBPC_VeilingApp;
+using MBPC_VeilingApp.Classes;
+using System;
+using System.Data.SqlClient;
+using System.Reflection.Metadata;
+using System.Security.Cryptography;
+
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Saïd
 //try
 //{
@@ -90,18 +96,17 @@ Console.ReadKey();
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
-//Auction auction = new Auction(3, 1, "A215", "2022 Fall Auction", DateTime.Now, DateTime.Now);
+//List<Lot> sortedLots = Lot.ReadLot();
 
-//DAL.CreateAuction(auction);
-//DAL.UpdateAuction(auction);
-//DAL.DeleteAuction(auction);
-//DAL.ReadAuctions();
-
-//List<Auction> auctions = DAL.auctions;
-
-//foreach (Auction b in auctions)
+//for (int i = 0; i < sortedLots.Count; i++)
 //{
-//    Console.WriteLine($"{b.GetId()},{b.GetName()},{b.GetStartDate()},{b.GetDescription()} {b.GetEndDate()}");
+//    sortedLots[i].SetLotId(i + 1); // Stel een nieuw lotnummer in 
+//    Console.WriteLine(sortedLots[i].GetLotNumber());
+//}
+
+//foreach (Lot lot in sortedLots)
+//{
+//    DAL.UpdateLot(lot);
 //}
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
