@@ -2,9 +2,6 @@
 using iTextSharp.text.pdf;
 using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 public class PDFGenerator
 {

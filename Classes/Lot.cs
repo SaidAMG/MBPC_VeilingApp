@@ -1,6 +1,5 @@
 ﻿namespace MBPC_VeilingApp.Classes;
 using System;
-using System.Runtime.CompilerServices;
 
 public class Lot
 {
