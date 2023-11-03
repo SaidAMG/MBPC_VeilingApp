@@ -331,7 +331,6 @@ namespace MBPC_VeilingApp
                 connection.Close();
             }
         }
-
         
         //CRUD Auction
         // Maakt een instantie Auction aan in de database.

@@ -1,4 +1,4 @@
-﻿using MBPC_VeilingApp;
+using MBPC_VeilingApp;
 using MBPC_VeilingApp.Classes;
 using System;
 using System.Data.SqlClient;
@@ -32,27 +32,20 @@ using System.Security.Cryptography;
 
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
-//Member member = new Member(82, "Dennis", "Bückers", "Nieuw Eyckholt", "Heerlen", "6419DJ", "Holland", 1401, "2105449buckers@zuyd.nl", DateTime.Parse("1998-07-19"), DateTime.Parse("2023-10-24"), "0625076277");
 
-//DAL.CreateMember(member);
-//DAL.ReadMembers();
-//DAL.UpdateMember(member);
-//DAL.DeleteMember(member);
+// Roep de PDFGenerator aan om het PDF-document te genereren
+PDFGenerator.GeneratePDF();
 
+Console.WriteLine("PDF is aangemaakt, druk op een toets om af te sluiten...");
+Console.ReadKey();
 
-//List<Member> members = DAL.members;
-
-//foreach (Member m in members)
-//{
-//    Console.WriteLine($"{m.GetId()},{m.GetFirstName()},{m.GetLastName()},{m.GetAddress()},{m.GetZipCode()},{m.GetCountry()},{m.GetMemberNumber()},{m.GetEmail()},{m.GetBirthDate()},{m.GetMemberNumber()},{m.GetTelephoneNumber()} ");
-//}
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Dennis
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
-//DAL.RefreshDAL()
+//DAL.RefreshDAL();
 
-// implementatie komt hier 
+//// implementatie komt hier 
 //Lot lot = new Lot(0, DAL.auctions.First(), DAL.members.First(), DAL.booklets.First(), 0, "", "", "", 0, 0, "");
 
 //try
@@ -67,6 +60,39 @@ using System.Security.Cryptography;
 //lot.CreateLot();
 
 //Console.WriteLine(Lot.ReadLot);
+
+//functie voor testen Sort class
+// Eerst de lots ophalen uit je DAL of ergens anders
+
+//List<Lot> lots = Lot.ReadLot().Where(l => l.GetAuctionId().GetId() == 1).ToList(); // Verondersteld dat je de ReadLot-methode hebt toegevoegd in de klasse
+//lots = RandomizeList(lots);
+
+//List < Lot > sortedLots = Sort.SortLotsByName(lots);
+
+//// Functie om de lijst te randomizen
+//static List<T> RandomizeList<T>(List<T> list)
+//{
+//    Random random = new Random();
+//    List<T> randomizedList = new List<T>(list);
+
+//    int n = randomizedList.Count;
+//    while (n > 1)
+//    {
+//        n--;
+//        int k = random.Next(n + 1);
+//        T value = randomizedList[k];
+//        randomizedList[k] = randomizedList[n];
+//        randomizedList[n] = value;
+//    }
+
+//    return randomizedList;
+//}
+
+//foreach (Lot l in sortedLots)
+//{
+//    Console.WriteLine($"LotId:{l.GetId()} Name: {l.GetBookletId().GetName()}");
+//}
+
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Jeroen
 
 //----------------------------------------------------------------------------------------------------> Voorbeeld van Kane
