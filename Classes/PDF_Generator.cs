@@ -8,11 +8,11 @@ using System.Linq;
 
 public class PDFGenerator
 {
-    public static void GeneratePDF()
+    public static void GeneratePDF(List<Lot> _sortedLots)
     {
         // Maak een nieuw PDF-document
         Document document = new Document();
-        PdfWriter writer = PdfWriter.GetInstance(document, new FileStream("Veilinglijst.pdf", FileMode.Create));
+        PdfWriter writer = PdfWriter.GetInstance(document, new FileStream($"C:\\Users\\{Environment.UserName}\\Downloads\\Veilinglijst.pdf", FileMode.Create));
 
         document.Open();
 
@@ -24,10 +24,9 @@ public class PDFGenerator
         DAL.RefreshDAL(); // Zorg ervoor dat de gegevens in de DAL zijn bijgewerkt
 
         // Sorteer de lots op BookletID
-        List<Lot> lotList = Lot.ReadLot();
         int currentBookletId = -1; // Een sentinelwaarde om te controleren wanneer de booklet verandert
 
-        foreach (Lot lot in lotList)
+        foreach (Lot lot in _sortedLots)
         {
             int bookletId = lot.GetBookletId().GetId();
 

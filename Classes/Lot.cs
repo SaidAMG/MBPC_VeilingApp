@@ -158,12 +158,13 @@ public class Lot
 
     public static List<Lot> ReadLot()
     {
+        DAL.RefreshDAL();
         return DAL.ReadLots();
     }
 
-    public void UpdateLot(Auction _auctionId, Member _vendorId, Booklet _bookletId, int _lotNumber, string _memberReference, string _description, string _perftype, string _perfCondition, int _verified, decimal _reservePrice)
+    public void UpdateLot()
     {
-        DAL.UpdateLot(new Lot(id, _auctionId, _vendorId, _bookletId, _lotNumber, _description, _perftype, _perfCondition, _verified, _reservePrice, _memberReference));
+        DAL.UpdateLot(this);
     }
 
     public void DeleteLot()

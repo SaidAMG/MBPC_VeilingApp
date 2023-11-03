@@ -294,14 +294,27 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = "UPDATE LOT SET auctionId = @auctionId, vendorId = @vendorId, bookletId = @bookletId, lotNumber = @lotNumber, description = @description, perfType = @perfType, perfCondition = @perfCondition, verified = @verified, reservePrice = @reservePrice, memberReference = @memberReference WHERE id = @id";
+                string qry = 
+                    "UPDATE LOT " +
+                    "SET " +
+                    "auctionId = @auctionId, " +
+                    "vendorId = @vendorId, " +
+                    "bookletId = @bookletId, " +
+                    "lotNumber = @lotNumber, " +
+                    "description = @description, " +
+                    "perfType = @perfType, " +
+                    "perfCondition = @perfCondition, " +
+                    "verified = @verified, " +
+                    "reservePrice = @reservePrice, " +
+                    "memberReference = @memberReference " +
+                    "WHERE id = @id";
                 connection.Open();
                 using (SqlCommand command = new SqlCommand(qry, connection))
                 {
                     command.Parameters.AddWithValue("@id", _lot.GetId());
-                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId().GetId);
-                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId().GetId);
-                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId().GetId);
+                    command.Parameters.AddWithValue("@auctionId", _lot.GetAuctionId().GetId());
+                    command.Parameters.AddWithValue("@vendorId", _lot.GetVendorId().GetId());
+                    command.Parameters.AddWithValue("@bookletId", _lot.GetBookletId().GetId());
                     command.Parameters.AddWithValue("@lotNumber", _lot.GetLotNumber());
                     command.Parameters.AddWithValue("@description", _lot.GetDescription());
                     command.Parameters.AddWithValue("@perfType", _lot.GetPerfType());

@@ -75,6 +75,7 @@
         {
             DAL.CreateAuction(this);
         }
+
         public void UpdateAuctionDAL(int _auctioneerId, string _name, string _description, DateTime _startDate, DateTime _endDate)
         {
             DAL.UpdateAuction(new Auction(id, _auctioneerId, _name, _description, _startDate, _endDate));
