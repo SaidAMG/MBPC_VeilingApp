@@ -9,7 +9,7 @@ public class PDFGenerator
     {
         // Maak een nieuw PDF-document
         Document document = new Document();
-        PdfWriter writer = PdfWriter.GetInstance(document, new FileStream($"C:\\Users\\{Environment.UserName}\\Downloads\\Veilinglijst.pdf", FileMode.Create));
+        PdfWriter writer = PdfWriter.GetInstance(document, new FileStream($"C:\\Users\\{Environment.UserName}\\Downloads\\Veilinglijst-{_sortedLots?[0].GetAuctionId().GetName().Replace(" ","")}.pdf", FileMode.Create));
 
         document.Open();
 
@@ -63,7 +63,7 @@ public class PDFGenerator
             // Voeg de gegevens van het huidige lot toe aan de tabel
             PdfPTable dataTable = new PdfPTable(new float[] { 1, 1, 2, 1, 1 }); // Dynamische kolombreedtes
             dataTable.WidthPercentage = 100; // Tabel neemt volledige paginabreedte in
-            dataTable.AddCell(lot.GetId().ToString());
+            dataTable.AddCell(lot.GetLotNumber().ToString());
             dataTable.AddCell(lot.GetPerfType());
             dataTable.AddCell(lot.GetDescription());
             dataTable.AddCell(lot.GetPerfCondition());
