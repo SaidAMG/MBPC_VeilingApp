@@ -4,21 +4,13 @@
     {
         public static List<Lot> SortLotsByName(List<Lot> lots)
         {
-            List<Lot> sortedLots = lots.OrderBy(lot => lot.GetBookletId().GetName(), new BookletNameComparer()).ToList();
+            List<Lot> sortedLots = lots.OrderBy(lot => lot.GetBookletId().GetName(), new AlphanumericComparer()).ToList();
             return sortedLots;
         }
 
-        private class BookletNameComparer : IComparer<string>
+        private class AlphanumericComparer : IComparer<string>
         {
             public int Compare(string x, string y)
-            {
-                return AlphanumericComparer.Compare(x, y);
-            }
-        }
-
-        private static class AlphanumericComparer
-        {
-            public static int Compare(string x, string y)
             {
                 int indexX = 0;
                 int indexY = 0;
