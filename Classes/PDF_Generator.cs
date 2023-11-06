@@ -54,7 +54,7 @@ public class PDFGenerator
                 table.AddCell("Description");
                 table.AddCell("Cond");
                 table.AddCell("Price");
-
+                table.SpacingBefore = 5f;
                 document.Add(table);
 
                 currentBookletId = bookletId;
