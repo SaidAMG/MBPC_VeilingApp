@@ -1,5 +1,4 @@
 using MBPC_VeilingApp.Classes;
-using System.Data.SqlClient;
 
 //----------------------------------------------------------------------------------------------------> Implementatie veilinglijs aanmaken
 void GenerateAuctionList()

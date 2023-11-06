@@ -5,7 +5,7 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MBPC_VeilingApp", "MBPC_VeilingApp.csproj", "{F3FC9320-CE7E-4FA6-BB99-7B4429913FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBPC_VeilingAppTests2", "..\MBPC_VeilingAppTests2\MBPC_VeilingAppTests2.csproj", "{9312E1C8-8795-4D8F-8736-63A78F1479C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MBPC_VeilingAppTests", "..\MBPC_VeilingAppTests2\MBPC_VeilingAppTests.csproj", "{9312E1C8-8795-4D8F-8736-63A78F1479C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

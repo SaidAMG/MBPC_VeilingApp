@@ -441,7 +441,7 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = 
+                string qry =
                     "INSERT INTO LOT2MEM(buyerId, lotId ,timeStamp, price) " +
                     "VALUES(@buyerId, @lotId ,@timeStamp, @price)";
                 connection.Open();
@@ -464,7 +464,7 @@ namespace MBPC_VeilingApp
             lot2mems.Clear();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = 
+                string qry =
                     "SELECT buyerId, lotId ,timeStamp, price " +
                     "FROM LOT2MEM";
                 connection.Open();
@@ -493,7 +493,7 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = 
+                string qry =
                     "UPDATE LOT2MEM SET timeStamp = @timeStamp, price = @price " +
                     "WHERE buyerId = @buyerId AND lotId = @lotId";
                 connection.Open();
@@ -514,7 +514,7 @@ namespace MBPC_VeilingApp
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string qry = 
+                string qry =
                     "DELETE FROM LOT2MEM " +
                     "WHERE buyerId = @buyerId AND lotId = @lotId";
                 connection.Open();
