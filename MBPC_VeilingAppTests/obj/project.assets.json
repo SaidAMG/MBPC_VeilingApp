@@ -2807,23 +2807,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\said2\\.nuget\\packages\\": {},
+    "C:\\Users\\Akari\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
+      "projectUniqueName": "C:\\Users\\Akari\\source\\repos\\SaidAMG\\MBPC_VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
       "projectName": "MBPC_VeilingAppTests",
-      "projectPath": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
-      "packagesPath": "C:\\Users\\said2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingAppTests\\obj\\",
+      "projectPath": "C:\\Users\\Akari\\source\\repos\\SaidAMG\\MBPC_VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
+      "packagesPath": "C:\\Users\\Akari\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Akari\\source\\repos\\SaidAMG\\MBPC_VeilingApp\\MBPC_VeilingAppTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\said2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Akari\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2839,8 +2839,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj": {
-              "projectPath": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj"
+            "C:\\Users\\Akari\\source\\repos\\SaidAMG\\MBPC_VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj": {
+              "projectPath": "C:\\Users\\Akari\\source\\repos\\SaidAMG\\MBPC_VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj"
             }
           }
         }
@@ -2888,7 +2888,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   },

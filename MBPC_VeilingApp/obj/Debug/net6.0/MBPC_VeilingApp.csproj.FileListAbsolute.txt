@@ -22,3 +22,27 @@ C:\Users\said2\OneDrive - Zuyd Hogeschool\Bachelor-ICT\Leerjaar 1\Blok 1\Casus\V
 C:\Users\said2\OneDrive - Zuyd Hogeschool\Bachelor-ICT\Leerjaar 1\Blok 1\Casus\VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.pdb
 C:\Users\said2\OneDrive - Zuyd Hogeschool\Bachelor-ICT\Leerjaar 1\Blok 1\Casus\VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.genruntimeconfig.cache
 C:\Users\said2\OneDrive - Zuyd Hogeschool\Bachelor-ICT\Leerjaar 1\Blok 1\Casus\VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\ref\MBPC_VeilingApp.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\MBPC_VeilingApp.exe
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\MBPC_VeilingApp.deps.json
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\MBPC_VeilingApp.runtimeconfig.json
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\MBPC_VeilingApp.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\MBPC_VeilingApp.pdb
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\BouncyCastle.Crypto.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\itextsharp.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\System.Data.SqlClient.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\runtimes\win-arm64\native\sni.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\runtimes\win-x64\native\sni.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.csproj.AssemblyReference.cache
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.AssemblyInfoInputs.cache
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.AssemblyInfo.cs
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.csproj.CoreCompileInputs.cache
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.csproj.CopyComplete
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\refint\MBPC_VeilingApp.dll
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.pdb
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\MBPC_VeilingApp.genruntimeconfig.cache
+C:\Users\Akari\source\repos\SaidAMG\MBPC_VeilingApp\MBPC_VeilingApp\obj\Debug\net6.0\ref\MBPC_VeilingApp.dll
