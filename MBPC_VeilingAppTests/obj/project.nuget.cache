@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tPj/hqTIdGUWGzruTK6LQcHnA7fbkSgOlYfdbHJmtluZR3X5Cb1fN2Lo7XISpUFPCnvGrKBwt3P79xXylExaNg==",
+  "dgSpecHash": "eYYgs4cmz0QYlcEnZHgL9j16TeNKR+XNIMUx2jxEEjvlJhJPMfZoomyk/IJJ2DZnpJpJjqY5rLwjHDRru+Lhnw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
+  "projectFilePath": "C:\\Users\\said2\\OneDrive - ZuydHogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingAppTests\\MBPC_VeilingAppTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\said2\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
     "C:\\Users\\said2\\.nuget\\packages\\coverlet.collector\\3.2.0\\coverlet.collector.3.2.0.nupkg.sha512",

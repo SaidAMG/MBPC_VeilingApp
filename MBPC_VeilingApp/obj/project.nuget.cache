@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "pgiAWYFy/896punUc8HlDRm7ypBfEoFWOcwHXODFQ1fks8yniKT4+VnguToMSFPzRT/5/bZy0XbqH6iqbWcJeg==",
+  "dgSpecHash": "uTGdmo0KocNAx+bSwzzxU2AKvCydf+57k1sz2QhFOtew3g0hnbf45JOqPJx5ywb9IfrO2+lzCH8QOkOr7X9G/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\said2\\OneDrive - Zuyd Hogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj",
+  "projectFilePath": "C:\\Users\\said2\\OneDrive - ZuydHogeschool\\Bachelor-ICT\\Leerjaar 1\\Blok 1\\Casus\\VeilingApp\\MBPC_VeilingApp\\MBPC_VeilingApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\said2\\.nuget\\packages\\bouncycastle\\1.8.9\\bouncycastle.1.8.9.nupkg.sha512",
     "C:\\Users\\said2\\.nuget\\packages\\itextsharp\\5.5.13.3\\itextsharp.5.5.13.3.nupkg.sha512",
