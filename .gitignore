@@ -365,3 +365,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.dgspec.json
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.g.props
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.g.targets
+/MBPC_VeilingApp/obj/project.assets.json
+/MBPC_VeilingApp/obj/project.nuget.cache
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.dgspec.json
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.g.props
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.g.targets
+/MBPC_VeilingAppTests/obj/project.assets.json
+/MBPC_VeilingAppTests/obj/project.nuget.cache
