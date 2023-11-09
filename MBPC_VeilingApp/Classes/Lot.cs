@@ -22,12 +22,6 @@ public class Lot
         if (_description.Length > 100) { throw new ArgumentException("Description should be at most 100 characters long."); }
         if (_perfType.Length > 10) { throw new ArgumentException("PerfType should be at most 10 characters long."); }
         if (_perfCondition.Length > 10) { throw new ArgumentException("PerfCondition should be at most 10 characters long."); }
-        string formattedValue = reservePrice.ToString("000000000.##"); // Formaat met maximaal 10 decimalen
-        if (formattedValue.Length > 12) // 2 extra tekens voor mogelijke decimalen en min-teken
-        {
-            throw new ArgumentException("reservePrice should be at most 10 characters long.");
-        }
-
 
         id = _id;
         auctionId = _auctionId;
