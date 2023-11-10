@@ -32,6 +32,10 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+MBPC_VeilingApp/bin/
+MBPC_VeilingApp/obj/
+MBPC_VeilingAppTests/bin/
+MBPC_VeilingAppTests/obj/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -361,3 +365,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.dgspec.json
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.g.props
+/MBPC_VeilingApp/obj/MBPC_VeilingApp.csproj.nuget.g.targets
+/MBPC_VeilingApp/obj/project.assets.json
+/MBPC_VeilingApp/obj/project.nuget.cache
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.dgspec.json
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.g.props
+/MBPC_VeilingAppTests/obj/MBPC_VeilingAppTests.csproj.nuget.g.targets
+/MBPC_VeilingAppTests/obj/project.assets.json
+/MBPC_VeilingAppTests/obj/project.nuget.cache
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.assets.cache
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.csproj.FileListAbsolute.txt
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.dll
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.GeneratedMSBuildEditorConfig.editorconfig
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.genruntimeconfig.cache
+/MBPC_VeilingApp/obj/Debug/net6.0/MBPC_VeilingApp.pdb
+/MBPC_VeilingApp/bin/Debug/net6.0/MBPC_VeilingApp.dll
+/MBPC_VeilingApp/bin/Debug/net6.0/MBPC_VeilingApp.pdb
+/MBPC_VeilingAppTests/obj/Debug/net6.0/MBPC_VeilingAppTests.assets.cache
+/MBPC_VeilingAppTests/obj/Debug/net6.0/MBPC_VeilingAppTests.csproj.AssemblyReference.cache
+/MBPC_VeilingAppTests/obj/Debug/net6.0/MBPC_VeilingAppTests.csproj.FileListAbsolute.txt
+/MBPC_VeilingAppTests/obj/Debug/net6.0/MBPC_VeilingAppTests.GeneratedMSBuildEditorConfig.editorconfig

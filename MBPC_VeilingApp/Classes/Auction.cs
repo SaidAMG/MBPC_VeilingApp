@@ -44,12 +44,10 @@
         {
             return startDate;
         }
-
         public DateTime GetEndDate()
         {
             return endDate;
         }
-
 
         //Setters
         public void SetDescription(string _description)
@@ -64,7 +62,6 @@
         {
             startDate = _startDate;
         }
-
         public void SetEndDate(DateTime _endDate)
         {
             endDate = _endDate;
@@ -84,7 +81,6 @@
         {
             DAL.DeleteAuction(this);
         }
-
         public static List<Auction> ReadAuction()
         {
             return DAL.ReadAuctions();

@@ -1,11 +1,96 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MBPC_VeilingApp.Classes.Tests
 {
     [TestClass()]
     public class LotTests
     {
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SetMemberReference_TooLong_ShouldThrowArgumentException()
+        {
+            // Arrange/Act
+            var lot = new Lot(
+                1,
+                null,
+                null,
+                null,
+                1,
+                "LotDescription",
+                "PerfType",
+                "PerfCond",
+                1,
+                100.0m,
+                "MemberReferenceToLong");
+
+            // Assert is handled by ExpectedException
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SetDescription_TooLong_ShouldThrowArgumentException()
+        {
+            // Arrange/Act
+            var lot = new Lot(
+                1,
+                null,
+                null,
+                null,
+                1,
+                "This description is definitely way too long and should cause an exception to be thrown This description is definitely way too long and should cause an exception to be thrown This description is definitely way too long and should cause an exception to be thrown",
+                "PerfType",
+                "PerfCond",
+                1,
+                100.0m,
+                "MemberRef");
+
+            // Assert is handled by ExpectedException
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SetPerfType_TooLong_ShouldThrowArgumentException()
+        {
+            // Arrange/Act
+            var lot = new Lot(
+                1,
+                null,
+                null,
+                null,
+                1,
+                "LotDescription",
+                "PerfTypeToLong",
+                "PerfCond",
+                1,
+                100.0m,
+                "MemberRef");
+
+            // Assert is handled by ExpectedException
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void SetPerfCondition_TooLong_ShouldThrowArgumentException()
+        {
+            // Arrange/Act
+            var lot = new Lot(
+                1,
+                null,
+                null,
+                null,
+                1,
+                "LotDescription",
+                "PerfType",
+                "PerfCondToLong",
+                1,
+                100.0m,
+                "MemberRef");
+
+            // Assert is handled by ExpectedException
+        }
+
+
         [TestMethod]
         public void SetAuctionId_ValidAuctionId_ShouldUpdateAuctionId()
         {
