@@ -1,5 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 
 namespace MBPC_VeilingApp.Classes.Tests
 {
@@ -11,7 +10,13 @@ namespace MBPC_VeilingApp.Classes.Tests
         public void SetName_TooLong_ShouldThrowArgumentException()
         {
             // Arrange/Act
-            var auction = new Auction(1, new Member(1, "Auctioneer", "LastName", "Address", "City", "12345", "Country", 1, "email@example.com", DateTime.Now, DateTime.Now, "1234567890"), "NameTooLong123", "Description", DateTime.Now, DateTime.Now);
+            var auction = new Auction(
+                1,
+                new Member(1, "Auctioneer", "LastName", "Address", "City", "12345", "Country", 1, "email@example.com", DateTime.Now, DateTime.Now, "1234567890"),
+                "NameTooLong123",
+                "Description",
+                DateTime.Now,
+                DateTime.Now);
 
             // Assert is handled by ExpectedException
         }
@@ -21,7 +26,13 @@ namespace MBPC_VeilingApp.Classes.Tests
         public void SetDescription_TooLong_ShouldThrowArgumentException()
         {
             // Arrange/Act
-            var auction = new Auction(1, new Member(1, "Auctioneer", "LastName", "Address", "City", "12345", "Country", 1, "email@example.com", DateTime.Now, DateTime.Now, "1234567890"), "Name", "This description is definitely way too long and should cause an exception to be thrown", DateTime.Now, DateTime.Now);
+            var auction = new Auction(
+                1,
+                new Member(1, "Auctioneer", "LastName", "Address", "City", "12345", "Country", 1, "email@example.com", DateTime.Now, DateTime.Now, "1234567890"),
+                "Name",
+                "This description is definitely way too long and should cause an exception to be thrown",
+                DateTime.Now,
+                DateTime.Now);
 
             // Assert is handled by ExpectedException
         }
