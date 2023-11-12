@@ -1,6 +1,6 @@
 ﻿namespace MBPC_VeilingApp.Classes
 {
-    internal class Sort
+    public class Sort
     {
         //functie om de gevonden gesorteerde getallen in een lijst te zetten. 
         public static List<Lot> SortLotsByName(List<Lot> lots)

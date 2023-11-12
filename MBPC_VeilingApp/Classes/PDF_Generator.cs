@@ -10,7 +10,7 @@ public class PDFGenerator
         // Maak een nieuw PDF-document
         Document document = new Document();
         PdfWriter writer = PdfWriter.GetInstance(document, new FileStream($"C:\\Users\\{Environment.UserName}\\Downloads\\Veilinglijst-{_sortedLots?[0].GetAuctionId().GetName().Replace(" ", "")}.pdf", FileMode.Create));
-
+         
         document.Open();
 
         // Definieer een aangepast lettertype voor de titels
